@@ -1,0 +1,1530 @@
+{
+  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.1.1/src/parser/StudyConfigSchema.json",
+  "baseComponents": {
+    "unity-game": {
+      "type": "website"
+    }
+  },
+  "components": {
+    "introduction": {
+      "correctAnswer": [],
+      "path": "revisitgames-study-3/assets/introduction.md",
+      "response": [
+        {
+          "id": "prolificId",
+          "prompt": "Before we move on, please enter your Prolific ID first",
+          "location": "belowStimulus",
+          "type": "shortText",
+          "placeholder": "Prolific ID",
+          "paramCapture": "PROLIFIC_PID"
+        }
+      ],
+      "type": "markdown"
+    },
+    "Consent Form": {
+      "correctAnswer": [],
+      "path": "revisitgames-study-3/assets/consent.md",
+      "nextButtonText": "Agree",
+      "response": [
+        {
+          "id": "signature",
+          "location": "belowStimulus",
+          "placeholder": "Please provide your signature",
+          "prompt": "Your signature (It can be your preferred name)",
+          "required": true,
+          "type": "shortText"
+        },
+        {
+          "id": "accept",
+          "location": "belowStimulus",
+          "options": [
+            "Decline",
+            "Accept"
+          ],
+          "prompt": "Do you consent to the study and wish to continue?",
+          "required": true,
+          "requiredValue": "Accept",
+          "type": "radio"
+        }
+      ],
+      "type": "markdown"
+    },
+    "Attention Check A": {
+      "correctAnswer": [        
+        {
+          "answer": "Disagree",
+          "id": "attentionchecka"
+        }
+      ],
+      "path": "revisitgames-study-3/assets/attentioncheck-a.md",
+      "response": [
+        {
+          "id": "attentionchecka",
+          "prompt": "",
+          "location": "belowStimulus",
+          "required": true,
+          "options": [
+            "Strongly Agree",
+            "Agree",
+            "Neutral",
+            "Disagree",
+            "Strongly Disagree"
+          ],
+          "type": "radio"
+        }
+      ],
+      "type": "markdown"
+    },
+    "Disqualification": {
+      "correctAnswer": [],
+      "path": "revisitgames-study-3/assets/disqualification.md",
+      "nextButtonText":"Disqualified",
+      "response": [
+        {
+          "hidden": true,
+          "id": "disqualification",
+          "prompt":"You have been disqualified from this study.",
+          "required": true,
+          "type": "shortText"
+        }
+      ],
+      "type": "markdown"
+    },
+    "Game Intro": {
+      "correctAnswer": [],
+      "path": "revisitgames-study-3/assets/game-intro.md",
+      "response": [],
+      "type": "markdown"
+    },
+    "Game_1": {
+      "instruction": "Navigating your characters (the blue cubes) across the busy road and river (the blue floor)! Avoiding the cars (red cubes)! And reach the other side! nce you do so, you will be able to click the [Next] button, which is located at the bottom of the game screen, to move to the next page. You can see the game tutorial at any time by clicking the [Help] button in the top-right corner of the screen. We suggest maximizing your browser window, as the video game can be on the larger side. **When you finish the game and want to leave the game page but can't find the mouse to click, please try pressing the Esc key.**",
+      "instructionLocation": "aboveStimulus",
+      "baseComponent": "unity-game",
+      "path": "revisitgames-study-3/assets/revisit-wrapper.html?isJuicy=0}",
+      "response": [
+        {
+          "id": "movement_complete",
+          "type": "longText",
+          "prompt": "",
+          "location": "belowStimulus",
+          "hidden": true,
+          "required": false,
+          "placeholder": ""
+        },
+        {
+          "id": "collisons_complete",
+          "type": "longText",
+          "prompt": "",
+          "location": "belowStimulus",
+          "hidden": true,
+          "required": false,
+          "placeholder": ""
+        },
+        {
+          "id": "summary_complete",
+          "type": "longText",
+          "prompt": "",
+          "location": "belowStimulus",
+          "hidden": true,
+          "required": false,
+          "placeholder": ""
+        },
+        {
+          "id": "game_complete",
+          "type": "reactive",
+          "prompt": "",
+          "location": "belowStimulus"
+        }
+      ]
+    },
+    "Game_2": {
+        "instruction": "Navigating your characters (the blue cubes) across the busy road and river (the blue floor)! Avoiding the cars (red cubes)! And reach the other side! nce you do so, you will be able to click the [Next] button, which is located at the bottom of the game screen, to move to the next page. You can see the game tutorial at any time by clicking the [Help] button in the top-right corner of the screen. We suggest maximizing your browser window, as the video game can be on the larger side. **When you finish the game and want to leave the game page but can't find the mouse to click, please try pressing the Esc key.**",
+        "instructionLocation": "aboveStimulus",
+        "baseComponent": "unity-game",
+        "path": "revisitgames-study-3/assets/revisit-wrapper.html?isJuicy=1}",
+        "response": [
+          {
+            "id": "movement_complete",
+            "type": "longText",
+            "prompt": "",
+            "location": "belowStimulus",
+            "hidden": true,
+            "required": false,
+            "placeholder": ""
+          },
+          {
+            "id": "collisons_complete",
+            "type": "longText",
+            "prompt": "",
+            "location": "belowStimulus",
+            "hidden": true,
+            "required": false,
+            "placeholder": ""
+          },
+          {
+            "id": "summary_complete",
+            "type": "longText",
+            "prompt": "",
+            "location": "belowStimulus",
+            "hidden": true,
+            "required": false,
+            "placeholder": ""
+          },
+          {
+            "id": "game_complete",
+            "type": "reactive",
+            "prompt": "",
+            "location": "belowStimulus"
+          }
+        ]
+    },
+    "Questionnaire1_A": {
+      "correctAnswer": [],
+      "response": [
+        {
+          "id": "q1_A_1",
+          "prompt": "Question1_A_1: I feel competent at the game.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_2",
+          "prompt": "Question1_A_2: I feel very capable and effective when playing.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_3",
+          "prompt": "Question1_A_3: My ability to play the game is well matched with the game's challenges.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_4",
+          "prompt": "Question1_A_4: The game provides me with interesting options and choices.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_5",
+          "prompt": "Question1_A_5: The game lets you do interesting things.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_6",
+          "prompt": "Question1_A_6: I experienced a lot of freedom in the game.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_7",
+          "prompt": "Question1_A_7: I find the relationships I form in this game fulfilling.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_8",
+          "prompt": "Question1_A_8: I find the relationships I form in this game important.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_9",
+          "prompt": "Question1_A_9: I don't feel close to other players.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_10",
+          "prompt": "Question1_A_10: When playing the game, I feel transported to another time and place.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_11",
+          "prompt": "Question1_A_11: Exploring the game world feels like taking an actual trip to a new place.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_12",
+          "prompt": "Question1_A_12: When moving through the game world I feel as if I am actually there.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_13",
+          "prompt": "Question1_A_13: I am not impacted emotionally by events in the game.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_14",
+          "prompt": "Question1_A_14: The game was emotionally engaging.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_15",
+          "prompt": "Question1_A_15: I experience feelings as deeply in the game as I have in real life.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_16",
+          "prompt": "Question1_A_16: When playing the game I feel as if I was part of the story.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_17",
+          "prompt": "Question1_A_17: When I accomplished something in the game I experienced genuine pride.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_18",
+          "prompt": "Question1_A_18: I had reactions to events and characters in the game as if they were real.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_19",
+          "prompt": "Question1_A_19: Learning the game controls was easy.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_20",
+          "prompt": "Question1_A_20: The game controls are intuitive.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_A_21",
+          "prompt": "Question1_A_21: When I wanted to do something in the game, it was easy to remember the corresponding control.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        }
+      ],
+      "type": "questionnaire"
+    },
+    "Questionnaire1_B": {
+      "correctAnswer": [],
+      "response": [
+        {
+          "id": "q1_B",
+          "prompt": "Question1_B: Please indicate how you felt while playing the version of the game for each of the items, on the following scale:",
+          "location": "belowStimulus",
+          "answerOptions": [
+            "1 (Strongly disagree)",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7 (Strongly agree)"
+          ],
+          "questionOptions": [
+            "Playing the game was meaningful to me.",
+            "The game felt relevant to me.",
+            "Playing this game was valuable to me.",
+            "I felt capable while playing the game.",
+            "I felt I was good at playing this game.",
+            "I felt a sense of mastery playing this game.",
+            "I was no longer aware of my surroundings while I was playing.",
+            "I was immersed in the game.",
+            "I was fully focused on the game.",
+            "I felt a sense of freedom about how I wanted to play this game.",
+            "I felt free to play the game in my own way.",
+            "I felt like I had choices regarding how I wanted to play this game.",
+            "I felt eager to discover how the game continued.",
+            "I wanted to explore how the game evolved.",
+            "I wanted to find out how the game progressed.",
+            "I thought the game was easy to control.",
+            "The actions to control the game were clear to me.",
+            "It was easy to know how to perform actions in the game.",
+            "The game was challenging but not too challenging.",
+            "The game was not too easy and not too hard to play.",
+            "The challenges in the game were at the right level of difficulty for me.",
+            "The game gave clear feedback on my progress towards the goals.",
+            "I could easily assess how I was performing in the game.",
+            "The game informed me of my progress in the game.",
+            "I enjoyed the way the game was styled.",
+            "I liked the look and feel of the game.",
+            "I appreciated the aesthetics of the game.",
+            "The goals of the game were clear to me.",
+            "I grasped the overall goal of the game.",
+            "I understood the objectives of the game."
+          ],
+          "required": true,
+          "withDivider": true,
+          "type": "matrix-radio"
+        }
+      ],
+      "type": "questionnaire"
+    },
+    "Questionnaire1_C": {
+      "correctAnswer": [],
+      "instruction": "**Question1_C: Please provide your impressions of the game version you have tested by check marking your impression on the scale between the terms offered in each line.**",
+      "instructionLocation": "aboveStimulus",
+      "response": [
+        {
+          "id": "q1_C_1",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Human",
+          "leftLabel": "Technical",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_2",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Simple",
+          "leftLabel": "Complicated",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_3",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Practical",
+          "leftLabel": "Impractical",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_4",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Straightforward",
+          "leftLabel": "Cumbersome",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_5",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Predictable",
+          "leftLabel": "Unpredictable",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_6",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Clearly Structured",
+          "leftLabel": "Confusing",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_7",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Manageable",
+          "leftLabel": "Unruly",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_8",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Connective",
+          "leftLabel": "Isolating",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_9",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Professional",
+          "leftLabel": "Unprofessional",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_10",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Stylish",
+          "leftLabel": "Tacky",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_11",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Premium",
+          "leftLabel": "Cheap",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_12",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Integrating",
+          "leftLabel": "Alienating",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_13",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Brings Me Closer",
+          "leftLabel": "Separates Me",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_14",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Presentable",
+          "leftLabel": "Unpresentable",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_15",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Inventive",
+          "leftLabel": "Conventional",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_16",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Creative",
+          "leftLabel": "Unimaginative",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_17",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Bold",
+          "leftLabel": "Cautious",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_18",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Innovative",
+          "leftLabel": "Conservative",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_19",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Captivating",
+          "leftLabel": "Dull",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_20",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Challenging",
+          "leftLabel": "Undemanding",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_21",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Novel",
+          "leftLabel": "Ordinary",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_22",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Pleasant",
+          "leftLabel": "Unpleasant",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_23",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Attractive",
+          "leftLabel": "Ugly",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_24",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Likeable",
+          "leftLabel": "Disagreeable",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_25",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Inviting",
+          "leftLabel": "Rejecting",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_26",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Good",
+          "leftLabel": "Bad",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_27",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Appealing",
+          "leftLabel": "Repelling",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q1_C_28",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Motivating",
+          "leftLabel": "Discouraging",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        }
+      ],
+      "type": "questionnaire"
+    },
+    "Questionnaire2_A": {
+      "correctAnswer": [],
+      "response": [
+        {
+          "id": "q2_A_1",
+          "prompt": "Question1_A_1: I feel competent at the game.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_2",
+          "prompt": "Question1_A_2: I feel very capable and effective when playing.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_3",
+          "prompt": "Question1_A_3: My ability to play the game is well matched with the game's challenges.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_4",
+          "prompt": "Question1_A_4: The game provides me with interesting options and choices.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_5",
+          "prompt": "Question1_A_5: The game lets you do interesting things.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_6",
+          "prompt": "Question1_A_6: I experienced a lot of freedom in the game.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_7",
+          "prompt": "Question1_A_7: I find the relationships I form in this game fulfilling.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_8",
+          "prompt": "Question1_A_8: I find the relationships I form in this game important.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_9",
+          "prompt": "Question1_A_9: I don't feel close to other players.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_10",
+          "prompt": "Question1_A_10: When playing the game, I feel transported to another time and place.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_11",
+          "prompt": "Question1_A_11: Exploring the game world feels like taking an actual trip to a new place.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_12",
+          "prompt": "Question1_A_12: When moving through the game world I feel as if I am actually there.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_13",
+          "prompt": "Question1_A_13: I am not impacted emotionally by events in the game.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_14",
+          "prompt": "Question1_A_14: The game was emotionally engaging.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_15",
+          "prompt": "Question1_A_15: I experience feelings as deeply in the game as I have in real life.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_16",
+          "prompt": "Question1_A_16: When playing the game I feel as if I was part of the story.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_17",
+          "prompt": "Question1_A_17: When I accomplished something in the game I experienced genuine pride.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_18",
+          "prompt": "Question1_A_18: I had reactions to events and characters in the game as if they were real.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_19",
+          "prompt": "Question1_A_19: Learning the game controls was easy.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_20",
+          "prompt": "Question1_A_20: The game controls are intuitive.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_A_21",
+          "prompt": "Question1_A_21: When I wanted to do something in the game, it was easy to remember the corresponding control.",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Strongly Agree",
+          "leftLabel": "Do Not Agree",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        }
+      ],
+      "type": "questionnaire"
+    },
+    "Questionnaire2_B": {
+      "correctAnswer": [],
+      "response": [
+        {
+          "id": "q2_B",
+          "prompt": "Question2_B: Please indicate how you felt while playing the version of the game for each of the items, on the following scale:",
+          "location": "belowStimulus",
+          "answerOptions": [
+            "1 (Strongly disagree)",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7 (Strongly agree)"
+          ],
+          "questionOptions": [
+            "Playing the game was meaningful to me.",
+            "The game felt relevant to me.",
+            "Playing this game was valuable to me.",
+            "I felt capable while playing the game.",
+            "I felt I was good at playing this game.",
+            "I felt a sense of mastery playing this game.",
+            "I was no longer aware of my surroundings while I was playing.",
+            "I was immersed in the game.",
+            "I was fully focused on the game.",
+            "I felt a sense of freedom about how I wanted to play this game.",
+            "I felt free to play the game in my own way.",
+            "I felt like I had choices regarding how I wanted to play this game.",
+            "I felt eager to discover how the game continued.",
+            "I wanted to explore how the game evolved.",
+            "I wanted to find out how the game progressed.",
+            "I thought the game was easy to control.",
+            "The actions to control the game were clear to me.",
+            "It was easy to know how to perform actions in the game.",
+            "The game was challenging but not too challenging.",
+            "The game was not too easy and not too hard to play.",
+            "The challenges in the game were at the right level of difficulty for me.",
+            "The game gave clear feedback on my progress towards the goals.",
+            "I could easily assess how I was performing in the game.",
+            "The game informed me of my progress in the game.",
+            "I enjoyed the way the game was styled.",
+            "I liked the look and feel of the game.",
+            "I appreciated the aesthetics of the game.",
+            "The goals of the game were clear to me.",
+            "I grasped the overall goal of the game.",
+            "I understood the objectives of the game."
+          ],
+          "required": true,
+          "withDivider": true,
+          "type": "matrix-radio"
+        }
+      ],
+      "type": "questionnaire"
+    },
+    "Questionnaire2_C": {
+      "correctAnswer": [],
+      "instruction": "**Question2_C: Please provide your impressions of the game version you have tested by check marking your impression on the scale between the terms offered in each line.**",
+      "instructionLocation": "aboveStimulus",
+      "response": [
+        {
+          "id": "q2_C_1",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Human",
+          "leftLabel": "Technical",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_2",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Simple",
+          "leftLabel": "Complicated",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_3",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Practical",
+          "leftLabel": "Impractical",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_4",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Straightforward",
+          "leftLabel": "Cumbersome",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_5",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Predictable",
+          "leftLabel": "Unpredictable",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_6",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Clearly Structured",
+          "leftLabel": "Confusing",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_7",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Manageable",
+          "leftLabel": "Unruly",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_8",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Connective",
+          "leftLabel": "Isolating",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_9",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Professional",
+          "leftLabel": "Unprofessional",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_10",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Stylish",
+          "leftLabel": "Tacky",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_11",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Premium",
+          "leftLabel": "Cheap",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_12",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Integrating",
+          "leftLabel": "Alienating",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_13",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Brings Me Closer",
+          "leftLabel": "Separates Me",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_14",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Presentable",
+          "leftLabel": "Unpresentable",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_15",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Inventive",
+          "leftLabel": "Conventional",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_16",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Creative",
+          "leftLabel": "Unimaginative",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_17",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Bold",
+          "leftLabel": "Cautious",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_18",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Innovative",
+          "leftLabel": "Conservative",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_19",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Captivating",
+          "leftLabel": "Dull",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_20",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Challenging",
+          "leftLabel": "Undemanding",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_21",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Novel",
+          "leftLabel": "Ordinary",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_22",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Pleasant",
+          "leftLabel": "Unpleasant",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_23",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Attractive",
+          "leftLabel": "Ugly",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_24",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Likeable",
+          "leftLabel": "Disagreeable",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_25",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Inviting",
+          "leftLabel": "Rejecting",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_26",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Good",
+          "leftLabel": "Bad",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_27",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Appealing",
+          "leftLabel": "Repelling",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        },
+        {
+          "id": "q2_C_28",
+          "prompt": "",
+          "location": "belowStimulus",
+          "numItems": 7,
+          "rightLabel": "Motivating",
+          "leftLabel": "Discouraging",
+          "required": true,
+          "withDivider": true,
+          "type": "likert"
+        }
+      ],
+      "type": "questionnaire"
+    },
+    "Demographics Intro": {
+      "correctAnswer": [],
+      "path": "revisitgames-study-3/assets/demographics-intro.md",
+      "response": [],
+      "type": "markdown"
+    },
+    "Demographics Information": {
+      "correctAnswer": [],
+      "path": "revisitgames-study-3/assets/demographics.md",
+      "response": [
+        {
+          "id": "genderidentity",
+          "location": "belowStimulus",
+          "options": [
+            "Woman",
+            "Man",
+            "Non-binary / Genderqueer / Third gender",
+            "Genderfluid / Gender non-conforming",
+            "Agender",
+            "Transgender",
+            "Prefer not to say"
+          ],
+          "prompt": "What is your gender identity?",
+          "required": true,
+          "secondaryText": "You can select multiple options",
+          "type": "checkbox",
+          "withOther": true
+        },
+        {
+          "id": "education",
+          "location": "belowStimulus",
+          "options": [
+            "Less than high school degree",
+            "High school degree or equivalent (e.g., GED)",
+            "Some college but no degree",
+            "Associate degree / trade degree",
+            "Bachelor degree",
+            "Graduate degree (e.g., MA, MPhil, PhD, etc.)",
+            "Prefer not to say"
+          ],
+          "prompt": "What is the highest level of education you have completed or the highest degree you have received?",
+          "required": true,
+          "type": "radio"
+        },
+        {
+          "id": "age",
+          "location": "belowStimulus",
+          "placeholder": "Please provide your age number",
+          "prompt": "What is your age?",
+          "secondaryText": "You can write N/A if you prefer.",
+          "required": true,
+          "type": "shortText"
+        }
+      ],
+      "type": "markdown"
+    }
+  },
+  "sequence": {
+    "components": [
+      "introduction",
+      "Consent Form",
+      {
+        "components": [
+          "Attention Check A",
+          "Disqualification"
+        ],
+        "order": "fixed",
+        "skip": [
+          {
+            "name": "Attention Check A",
+            "check": "response",
+            "responseId": "attentionchecka",
+            "value": "Disagree",
+            "comparison": "equal",
+            "to": "Game Intro"
+          }
+        ]
+      },
+      "Game Intro",
+      {
+        "components": [
+          {
+            "components": [
+              "Game_1",
+              "Questionnaire1_A",
+              "Questionnaire1_B",
+              "Questionnaire1_C"
+            ],
+            "order": "fixed"
+          },
+          {
+            "components": [
+              "Game_2",
+              "Questionnaire2_A",
+              "Questionnaire2_B",
+              "Questionnaire2_C"
+            ],
+            "order": "fixed"
+          }
+        ],
+        "order": "latinSquare"
+      },
+      "Demographics Intro",
+      "Demographics Information"
+    ],
+    "order": "fixed"
+  },
+  "studyMetadata": {
+    "authors": [
+      "[AUTHOR]"
+    ],
+    "date": "2025-08-24",
+    "description": "",
+    "organizations": [
+      "[LAB]"
+    ],
+    "title": "reVISit-Games Study 3: Evaluating PX in Juicy Feedback of Games",
+    "version": "1.0"
+  },
+  "uiConfig": {
+    "contactEmail": "[EMAIL]",
+    "helpTextPath": "revisitgames-study-3/assets/help.md",
+    "logoPath": "revisitAssets/revisitLogoSquare.svg",
+    "timeoutReject": true,
+    "nextOnEnter": true,
+    "sidebar": false,
+    "studyEndMsg": "**Thank you for completing the study. You may click this link and return to Prolific**: [https://app.prolific.com/submissions/complete?cc=C1K45XTI](https://app.prolific.com/submissions/complete?cc=C1K45XTI)",
+    "withProgressBar": true,
+    "urlParticipantIdParam": "PROLIFIC_PID",
+    "participantNameField": "introduction.prolificId",
+    "autoDownloadStudy": false,
+    "autoDownloadTime": 5000
+  }
+}
