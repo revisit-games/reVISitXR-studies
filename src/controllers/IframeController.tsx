@@ -111,6 +111,8 @@ export function IframeController({ currentConfig, provState, answers }: { curren
     <iframe
       ref={ref}
       id={iframeId}
+      allow="xr-spatial-tracking; fullscreen"
+      allowFullScreen
       src={
         currentConfig.path.startsWith('http')
           ? currentConfig.path

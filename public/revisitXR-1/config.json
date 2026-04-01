@@ -1,0 +1,265 @@
+{
+  "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.1.1/src/parser/StudyConfigSchema.json",
+  "components": {
+    "introduction": {
+      "correctAnswer": [],
+      "path": "revisitXR-1/assets/introduction.md",
+      "response": [
+        {
+          "id": "prolificId",
+          "prompt": "Before we move on, please enter your Prolific ID first",
+          "location": "belowStimulus",
+          "type": "shortText",
+          "placeholder": "Prolific ID",
+          "paramCapture": "PROLIFIC_PID"
+        }
+      ],
+      "type": "markdown"
+    },
+    "Consent Form": {
+      "correctAnswer": [],
+      "path": "revisitXR-1/assets/consent.md",
+      "nextButtonText": "Agree",
+      "response": [
+        {
+          "id": "signature",
+          "location": "belowStimulus",
+          "placeholder": "Please provide your signature",
+          "prompt": "Your signature (It can be your preferred name)",
+          "required": true,
+          "type": "shortText"
+        },
+        {
+          "id": "accept",
+          "location": "belowStimulus",
+          "options": [
+            "Decline",
+            "Accept"
+          ],
+          "prompt": "Do you consent to the study and wish to continue?",
+          "required": true,
+          "requiredValue": "Accept",
+          "type": "radio"
+        }
+      ],
+      "type": "markdown"
+    },
+    "Attention Check A": {
+      "correctAnswer": [        
+        {
+          "answer": "Disagree",
+          "id": "attentionchecka"
+        }
+      ],
+      "path": "revisitXR-1/assets/attentioncheck-a.md",
+      "response": [
+        {
+          "id": "attentionchecka",
+          "prompt": "",
+          "location": "belowStimulus",
+          "required": true,
+          "options": [
+            "Strongly Agree",
+            "Agree",
+            "Neutral",
+            "Disagree",
+            "Strongly Disagree"
+          ],
+          "type": "radio"
+        }
+      ],
+      "type": "markdown"
+    },
+    "Disqualification_a": {
+      "correctAnswer": [],
+      "path": "revisitXR-1/assets/disqualification-a.md",
+      "nextButtonText":"Disqualified",
+      "response": [
+        {
+          "hidden": true,
+          "id": "disqualification-a",
+          "prompt":"You have been disqualified from this study.",
+          "required": true,
+          "type": "shortText"
+        }
+      ],
+      "type": "markdown"
+    },
+    "Color Blindness Test": {
+      "instruction": "What number do you see in this image?",
+      "path": "revisitXR-1/assets/Ishihara9.png",
+      "nextButtonLocation": "sidebar",
+      "response": [
+        {
+          "id": "colorblindness-test",
+          "location": "sidebar",
+          "prompt": "Enter the number you see:",
+          "required": true,
+          "type": "numerical",
+          "withDontKnow": true
+        }
+      ],
+      "correctAnswer": [
+        {
+          "id": "colorblindness-test",
+          "answer": 45
+        }
+      ],
+      "style": {
+        "width": "300px"
+      },
+      "type": "image"
+    },
+    "Disqualification_c": {
+      "correctAnswer": [],
+      "path": "revisitXR-1/assets/disqualification-c.md",
+      "nextButtonText":"Disqualified",
+      "response": [
+        {
+          "hidden": true,
+          "id": "disqualification-c",
+          "prompt":"You have been disqualified from this study.",
+          "required": true,
+          "type": "shortText"
+        }
+      ],
+      "type": "markdown"
+    },
+    "revisitxr-1": {
+      "instruction": "",
+      "type": "website",
+      "nextButtonLocation": "sidebar",
+      "path": "revisitXR-1/assets/reVISitXR/index.html",
+      "response": [],
+      "correctAnswer": [],
+      "instructionLocation": "sidebar"
+    },
+    "Demographics Intro": {
+      "correctAnswer": [],
+      "path": "revisitXR-1/assets/demographics-intro.md",
+      "response": [],
+      "type": "markdown"
+    },
+    "Demographics Information": {
+      "correctAnswer": [],
+      "path": "revisitXR-1/assets/demographics.md",
+      "response": [
+        {
+          "id": "genderidentity",
+          "location": "belowStimulus",
+          "options": [
+            "Woman",
+            "Man",
+            "Non-binary / Genderqueer / Third gender",
+            "Genderfluid / Gender non-conforming",
+            "Agender",
+            "Transgender",
+            "Prefer not to say"
+          ],
+          "prompt": "What is your gender identity?",
+          "required": true,
+          "secondaryText": "You can select multiple options",
+          "type": "checkbox",
+          "withOther": true
+        },
+        {
+          "id": "education",
+          "location": "belowStimulus",
+          "options": [
+            "Less than high school degree",
+            "High school degree or equivalent (e.g., GED)",
+            "Some college but no degree",
+            "Associate degree / trade degree",
+            "Bachelor degree",
+            "Graduate degree (e.g., MA, MPhil, PhD, etc.)",
+            "Prefer not to say"
+          ],
+          "prompt": "What is the highest level of education you have completed or the highest degree you have received?",
+          "required": true,
+          "type": "radio"
+        },
+        {
+          "id": "age",
+          "location": "belowStimulus",
+          "placeholder": "Please provide your age number",
+          "prompt": "What is your age?",
+          "secondaryText": "You can write N/A if you prefer.",
+          "required": true,
+          "type": "shortText"
+        }
+      ],
+      "type": "markdown"
+    }
+  },
+  "sequence": {
+    "components": [
+      "introduction",
+      "Consent Form",
+      {
+        "components": [
+          "Attention Check A",
+          "Disqualification_a"
+        ],
+        "order": "fixed",
+        "skip": [
+          {
+            "name": "Attention Check A",
+            "check": "response",
+            "responseId": "attentionchecka",
+            "value": "Disagree",
+            "comparison": "equal",
+            "to": "Color Blindness Test"
+          }
+        ]
+      },
+      {
+        "components": [
+          "Color Blindness Test",
+          "Disqualification_c"
+        ],
+        "order": "fixed",
+        "skip": [
+          {
+            "name": "Color Blindness Test",
+            "check": "response",
+            "responseId": "colorblindness-test",
+            "value": 45,
+            "comparison": "equal",
+            "to": "revisitxr-1"
+          }
+        ]
+      },
+      "revisitxr-1",
+      "Demographics Intro",
+      "Demographics Information"
+    ],
+    "order": "fixed"
+  },
+  "studyMetadata": {
+    "authors": [
+      "Shano Liang, Max Chen, Lane Harrison"
+    ],
+    "date": "2026-03-05",
+    "description": "",
+    "organizations": [
+      "VIEW Lab, WPI"
+    ],
+    "title": "reVISitXR 1",
+    "version": "1.0"
+  },
+  "uiConfig": {
+    "contactEmail": "sliang1@wpi.edu",
+    "helpTextPath": "revisitXR-1/assets/help.md",
+    "logoPath": "revisitAssets/revisitLogoSquare.svg",
+    "timeoutReject": true,
+    "nextOnEnter": true,
+    "sidebar": true,
+    "sidebarWidth": 400,
+    "studyEndMsg": "**Thank you for completing the study. You may click this link and return to Prolific**: []()",
+    "withProgressBar": false,
+    "urlParticipantIdParam": "PROLIFIC_PID",
+    "participantNameField": "introduction.prolificId",
+    "autoDownloadStudy": false,
+    "autoDownloadTime": 5000
+  }
+}
