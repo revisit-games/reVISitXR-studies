@@ -1,0 +1,1 @@
+Please note that we take research participation seriously. We are aiming to recruit only those who are attentive and take care when responding. This is to ensure that we gather a representative sample and maximize data quality. Therefore, please select Disagree from the list below to continue. Otherwise, you will not be able to participate in this study.
