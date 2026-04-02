@@ -106,10 +106,15 @@ export function ResponseBlock({
   const showNextBtn = location === (configInUse?.nextButtonLocation || 'belowStimulus');
 
   useEffect(() => {
-    const ReactiveResponse = responsesWithDefaults.find((r) => r.type === 'reactive');
-    if (reactiveAnswers && ReactiveResponse) {
-      const answerId = ReactiveResponse.id;
-      answerValidator.setValues({ ...answerValidator.values, [answerId]: reactiveAnswers[answerId] as string[] });
+    const reactiveResponses = responsesWithDefaults.filter((response) => response.type === 'reactive');
+    if (reactiveAnswers && reactiveResponses.length > 0) {
+      const nextReactiveValues = Object.fromEntries(
+        reactiveResponses.map((response) => ([
+          response.id,
+          reactiveAnswers[response.id] ?? answerValidator.values[response.id] ?? [],
+        ])),
+      );
+      answerValidator.setValues({ ...answerValidator.values, ...nextReactiveValues });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reactiveAnswers]);
