@@ -1,7 +1,6 @@
 import {
   useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
-import { useDispatch } from 'react-redux';
 import { useCurrentComponent, useCurrentIdentifier } from '../routes/utils';
 import { useStoreDispatch, useStoreActions } from '../store/store';
 import { ParticipantData, WebsiteComponent } from '../parser/types';
@@ -14,14 +13,32 @@ const defaultStyle = {
   border: 0,
 };
 
-export function IframeController({ currentConfig, provState, answers }: { currentConfig: WebsiteComponent; provState?: unknown, answers: ParticipantData['answers'] }) {
+export type WebsiteAnalysisControl = {
+  mode: 'study' | 'analysis';
+  isPlaying: boolean;
+  participantId?: string | null;
+  trialId?: string;
+  allowLocalInteractionWhenPaused: boolean;
+};
+
+export function IframeController({
+  currentConfig,
+  provState,
+  answers,
+  analysisControl,
+}: {
+  currentConfig: WebsiteComponent;
+  provState?: unknown;
+  answers: ParticipantData['answers'];
+  analysisControl?: WebsiteAnalysisControl;
+}) {
   const {
     setReactiveAnswers, updateResponseBlockValidation,
   } = useStoreActions();
   const storeDispatch = useStoreDispatch();
-  const dispatch = useDispatch();
   const identifier = useCurrentIdentifier();
   const [height, setHeight] = useState(800);
+  const [windowReady, setWindowReady] = useState(false);
 
   const ref = useRef<HTMLIFrameElement>(null);
 
@@ -48,6 +65,12 @@ export function IframeController({ currentConfig, provState, answers }: { curren
     [ref, iframeId],
   );
 
+  const sendAnalysisControl = useCallback(() => {
+    if (analysisControl) {
+      sendMessage('ANALYSIS_CONTROL', analysisControl);
+    }
+  }, [analysisControl, sendMessage]);
+
   useEffect(() => {
     if (provState) {
       sendMessage('PROVENANCE', provState);
@@ -61,14 +84,22 @@ export function IframeController({ currentConfig, provState, answers }: { curren
   }, [answers, sendMessage]);
 
   useEffect(() => {
+    if (windowReady) {
+      sendAnalysisControl();
+    }
+  }, [windowReady, sendAnalysisControl]);
+
+  useEffect(() => {
     const handler = (e: MessageEvent) => {
       const { data } = e;
       if (typeof data === 'object' && iframeId === data.iframeId) {
         switch (data.type) {
           case `${PREFIX}/WINDOW_READY`:
+            setWindowReady(true);
             if (currentConfig.parameters) {
               sendMessage('STUDY_DATA', currentConfig.parameters);
             }
+            sendAnalysisControl();
             break;
           case `${PREFIX}/READY`:
             if (ref.current) {
@@ -105,7 +136,7 @@ export function IframeController({ currentConfig, provState, answers }: { curren
     window.addEventListener('message', handler);
 
     return () => window.removeEventListener('message', handler);
-  }, [storeDispatch, dispatch, iframeId, currentConfig, sendMessage, setReactiveAnswers, updateResponseBlockValidation, identifier]);
+  }, [storeDispatch, iframeId, currentConfig, sendMessage, sendAnalysisControl, setReactiveAnswers, updateResponseBlockValidation, identifier]);
 
   return (
     <iframe
@@ -119,7 +150,10 @@ export function IframeController({ currentConfig, provState, answers }: { curren
           : `${BASE_PREFIX}${currentConfig.path}?trialid=${currentComponent}&id=${iframeId}`
       }
       style={{ ...defaultStyle, height }}
-      onLoad={() => setHeight((ref.current?.contentWindow?.document.body.scrollHeight || 750) + 20)}
+      onLoad={() => {
+        setWindowReady(false);
+        setHeight((ref.current?.contentWindow?.document.body.scrollHeight || 750) + 20);
+      }}
     />
   );
 }

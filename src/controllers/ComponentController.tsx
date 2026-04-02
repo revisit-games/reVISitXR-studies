@@ -4,7 +4,7 @@ import {
 import { useSearchParams } from 'react-router';
 import { Center, Loader } from '@mantine/core';
 import { ResponseBlock } from '../components/response/ResponseBlock';
-import { IframeController } from './IframeController';
+import { IframeController, WebsiteAnalysisControl } from './IframeController';
 import { ImageController } from './ImageController';
 import { ReactComponentController } from './ReactComponentController';
 import { MarkdownController } from './MarkdownController';
@@ -43,6 +43,7 @@ export function ComponentController() {
   const [prevTrialName, setPrevTrialName] = useState<string | null>(null);
   const { setIsRecording } = useStoreActions();
   const analysisProvState = useStoreSelector((state) => state.analysisProvState.stimulus);
+  const analysisIsPlaying = useStoreSelector((state) => state.analysisIsPlaying);
 
   const isAnalysis = useIsAnalysis();
 
@@ -135,6 +136,13 @@ export function ComponentController() {
   }, [currentStep, storageEngine, sequence]);
 
   const currentIdentifier = useCurrentIdentifier();
+  const analysisControl = useMemo<WebsiteAnalysisControl>(() => ({
+    mode: isAnalysis ? 'analysis' : 'study',
+    isPlaying: isAnalysis ? analysisIsPlaying : false,
+    participantId: participantId || null,
+    trialId: currentIdentifier,
+    allowLocalInteractionWhenPaused: true,
+  }), [analysisIsPlaying, currentIdentifier, isAnalysis, participantId]);
   const currentConfig = useMemo(() => {
     const toReturn = currentComponent && currentComponent !== 'end' && !currentComponent.startsWith('__') && studyComponentToIndividualComponent(stepConfig, studyConfig) as IndividualComponent;
     if (typeof toReturn === 'object') {
@@ -194,7 +202,14 @@ export function ComponentController() {
 
       <Suspense key={`${currentStep}-stimulus`} fallback={<div>Loading...</div>}>
         {currentConfig.type === 'markdown' && <MarkdownController currentConfig={currentConfig} />}
-        {currentConfig.type === 'website' && <IframeController currentConfig={currentConfig} provState={analysisProvState} answers={answers} />}
+        {currentConfig.type === 'website' && (
+          <IframeController
+            currentConfig={currentConfig}
+            provState={analysisProvState}
+            answers={answers}
+            analysisControl={analysisControl}
+          />
+        )}
         {currentConfig.type === 'image' && <ImageController currentConfig={currentConfig} />}
         {currentConfig.type === 'react-component' && <ReactComponentController currentConfig={currentConfig} provState={analysisProvState} answers={answers} />}
         {currentConfig.type === 'vega' && <VegaController currentConfig={currentConfig} provState={analysisProvState as VegaProvState} />}
