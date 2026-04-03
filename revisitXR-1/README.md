@@ -101,6 +101,14 @@ Use Repo B mainly for:
 - response ids shown in the sidebar
 - forwarding analysis control to the iframe
 
+If replay timelines become too dense or immersive interaction starts dropping frames, tune Repo A first:
+
+- `logging/xrLoggingSchema.js`
+- `logging/xrSerialization.js`
+- `logging/xrStudyLogger.js`
+
+Timeline density is primarily a Repo A logging-policy issue, and this optimization phase does not require any new Repo B runtime behavior.
+
 Repo ownership for this package:
 
 - Repo A owns replay rendering, replay tooltip state, the replay avatar, and paused-analysis viewport chrome
