@@ -24,6 +24,19 @@ That manual copy step still applies after the replay-visual refinement. Repo B d
 
 - `assets/reVISitXR/index.html`
 
+Optional scene URLs now supported by Repo A:
+
+- `assets/reVISitXR/index.html`
+  Default template scene
+- `assets/reVISitXR/index.html?scene=1`
+  Example 1 energy bar matrix
+- `assets/reVISitXR/index.html?scene=2`
+  Example 2 placeholder
+- `assets/reVISitXR/index.html?scene=3`
+  Example 3 placeholder
+
+`config.json` stays on the default path in this round. Repo B simply embeds whichever Repo A URL you choose.
+
 The current reactive response ids are:
 
 - `xrMode`
@@ -48,6 +61,13 @@ That payload is derived in:
 and forwarded in:
 
 - `src/controllers/IframeController.tsx`
+
+`IframeController.tsx` now constructs local iframe URLs with `new URL(...)` plus `searchParams.set(...)`, so existing query strings are preserved correctly. For example:
+
+- `assets/reVISitXR/index.html`
+  becomes `assets/reVISitXR/index.html?trialid=...&id=...`
+- `assets/reVISitXR/index.html?scene=1`
+  becomes `assets/reVISitXR/index.html?scene=1&trialid=...&id=...`
 
 Payload shape:
 
@@ -106,6 +126,8 @@ If replay timelines become too dense or immersive interaction starts dropping fr
 - `logging/xrLoggingSchema.js`
 - `logging/xrSerialization.js`
 - `logging/xrStudyLogger.js`
+- `scenes/core/sceneRegistry.js`
+- `example1/`
 
 Timeline density is primarily a Repo A logging-policy issue, and this optimization phase does not require any new Repo B runtime behavior.
 
@@ -113,7 +135,7 @@ Repo ownership for this package:
 
 - Repo A owns replay rendering, replay tooltip state, the replay avatar, and paused-analysis viewport chrome
 - Repo B owns study composition, the website component wrapper, and forwarding `PROVENANCE` plus `ANALYSIS_CONTROL` into the iframe
-- this refinement phase required no functional Repo B runtime change
+- this scene-authoring phase only required one small Repo B runtime change: query-safe iframe URL construction so `?scene=1` survives the added `trialid` and `id` params
 
 ## Manual Deploy Checklist
 
@@ -121,7 +143,8 @@ Repo ownership for this package:
 2. Copy Repo A `dist/` contents into `public/revisitXR-1/assets/reVISitXR/`.
 3. Rebuild or rerun Repo B.
 4. Open `revisitXR-1` in study mode and verify reactive summaries.
-5. Open analysis replay and verify play/pause interaction plus replay pointer visuals.
-6. Verify the `USER SIGHT` avatar appears only in analysis replay and follows the replayed participant pose.
-7. Verify the orange paused banner and border appear only while replay is paused and local free-camera movement is allowed.
-8. Confirm that paused analyst interaction still does not create new participant provenance or extra reactive answers.
+5. If you want an authored scene instead of the template, point the website component at `assets/reVISitXR/index.html?scene=1`, `?scene=2`, or `?scene=3`.
+6. Open analysis replay and verify play/pause interaction plus replay pointer visuals.
+7. Verify the `USER SIGHT` avatar appears only in analysis replay and follows the replayed participant pose.
+8. Verify the orange paused banner and border appear only while replay is paused and local free-camera movement is allowed.
+9. Confirm that paused analyst interaction still does not create new participant provenance or extra reactive answers.
