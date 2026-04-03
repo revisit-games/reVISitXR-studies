@@ -49,6 +49,17 @@ export function IframeController({
 
   // navigation
   const currentComponent = useCurrentComponent();
+  const iframeSrc = useMemo(() => {
+    if (currentConfig.path.startsWith('http')) {
+      return currentConfig.path;
+    }
+
+    const baseUrl = new URL(BASE_PREFIX, window.location.origin);
+    const iframeUrl = new URL(currentConfig.path, baseUrl);
+    iframeUrl.searchParams.set('trialid', currentComponent);
+    iframeUrl.searchParams.set('id', iframeId);
+    return iframeUrl.toString();
+  }, [currentConfig.path, currentComponent, iframeId]);
 
   const sendMessage = useCallback(
     (tag: string, message: unknown) => {
@@ -144,11 +155,7 @@ export function IframeController({
       id={iframeId}
       allow="xr-spatial-tracking; fullscreen"
       allowFullScreen
-      src={
-        currentConfig.path.startsWith('http')
-          ? currentConfig.path
-          : `${BASE_PREFIX}${currentConfig.path}?trialid=${currentComponent}&id=${iframeId}`
-      }
+      src={iframeSrc}
       style={{ ...defaultStyle, height }}
       onLoad={() => {
         setWindowReady(false);
