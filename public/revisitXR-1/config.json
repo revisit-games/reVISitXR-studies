@@ -282,13 +282,13 @@
     "authors": [
       "Shano Liang, Max Chen, Lane Harrison"
     ],
-    "date": "2026-04-02",
+    "date": "2026-04-03",
     "description": "",
     "organizations": [
       "VIEW Lab, WPI"
     ],
-    "title": "reVISitXR 1 (v1.11)",
-    "version": "1.11"
+    "title": "reVISitXR 1 (v1.2)",
+    "version": "1.2"
   },
   "uiConfig": {
     "contactEmail": "sliang1@wpi.edu",
