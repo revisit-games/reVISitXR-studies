@@ -120,6 +120,7 @@ Use Repo B mainly for:
 - study config
 - response ids shown in the sidebar
 - forwarding analysis control to the iframe
+- replay timeline display normalization and legend presentation
 
 If replay timelines become too dense or immersive interaction starts dropping frames, tune Repo A first:
 
@@ -129,7 +130,30 @@ If replay timelines become too dense or immersive interaction starts dropping fr
 - `scenes/core/sceneRegistry.js`
 - `example1/`
 
-Timeline density is primarily a Repo A logging-policy issue, and this optimization phase does not require any new Repo B runtime behavior.
+Timeline density is primarily a Repo A logging-policy issue. Repo B only adds a lightweight runtime normalization layer for legend display labels and shared color categories.
+
+## Replay Legend Labels
+
+Replay legend labels are no longer derived from raw `node.label` alone.
+
+Repo B now normalizes display labels through:
+
+- `src/components/audioAnalysis/provenanceLegendLabels.ts`
+
+Current display-label precedence:
+
+1. trimmed `node.label`
+2. fallback derived from `node.event`
+3. `Root` for root nodes
+4. `Unlabeled Event` as a final safe fallback
+
+The helper also normalizes noisy historical labels such as:
+
+- `Change Example 1 Year To 1975` -> `Change Example 1 Year`
+
+This matters because stable labels keep the within-task legend readable and prevent dozens of almost-identical color categories from appearing during year scrubbing or other dense semantic updates.
+
+Color mapping is now built across the current trial's provenance graphs instead of only the `stimulus` graph, so the default scene (`revisitxr-0`) and Example 1 both benefit from the same fallback and grouping logic.
 
 Repo ownership for this package:
 
