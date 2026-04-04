@@ -23,9 +23,17 @@ import { humanReadableDuration } from '../../utils/humanReadableDuration';
 import { ResponseBlockLocation } from '../../parser/types';
 import { useUpdateProvenance } from './useUpdateProvenance';
 import { useEvent } from '../../store/hooks/useEvent';
+import { hasRenderableProvenanceGraph } from './provenanceLegendLabels';
 
 const margin = {
   left: 0, top: 0, right: 0, bottom: 0,
+};
+
+const EMPTY_RESPONSE_NODES: Record<ResponseBlockLocation, string | undefined> = {
+  aboveStimulus: undefined,
+  belowStimulus: undefined,
+  sidebar: undefined,
+  stimulus: undefined,
 };
 
 export function AudioProvenanceVis({ setTimeString }: { setTimeString: (time: string) => void }) {
@@ -44,18 +52,11 @@ export function AudioProvenanceVis({ setTimeString }: { setTimeString: (time: st
 
   const currentComponent = useCurrentComponent();
   const currentStep = useCurrentStep();
-  useEffect(() => { storeDispatch(saveAnalysisState({ prov: undefined, location: 'stimulus' })); }, [currentStep, saveAnalysisState, storeDispatch]);
-
   const [ref, { width }] = useResizeObserver();
   const [waveSurferWidth, setWaveSurferWidth] = useState<number>(0);
 
   const [currentNode, setCurrentNode] = useState<string | null>(null);
-  const [currentResponseNodes, setCurrentResponseNodes] = useState<Record<ResponseBlockLocation, string | undefined>>({
-    aboveStimulus: undefined,
-    belowStimulus: undefined,
-    sidebar: undefined,
-    stimulus: undefined,
-  });
+  const [currentResponseNodes, setCurrentResponseNodes] = useState<Record<ResponseBlockLocation, string | undefined>>(EMPTY_RESPONSE_NODES);
   const [currentGlobalNode, setCurrentGlobalNode] = useState<{name: string, time: number} | null>(null);
 
   const [totalAudioLength, setTotalAudioLength] = useState<number>(0);
@@ -71,16 +72,39 @@ export function AudioProvenanceVis({ setTimeString }: { setTimeString: (time: st
   const trrackForTrial = useRef<Trrack<object, string> | null>(null);
 
   const identifier = useCurrentIdentifier();
+  const stimulusProvenanceGraph = answers[identifier]?.provenanceGraph.stimulus;
+  const hasRenderableTimeline = useMemo(
+    () => Object.values(answers[identifier]?.provenanceGraph || {}).some((graph) => hasRenderableProvenanceGraph(graph)),
+    [answers, identifier],
+  );
+
+  const resetStimulusReplayState = useCallback(() => {
+    trrackForTrial.current = null;
+    setCurrentNode(null);
+    setCurrentGlobalNode(null);
+    setCurrentResponseNodes({ ...EMPTY_RESPONSE_NODES });
+    storeDispatch(saveAnalysisState({ prov: undefined, location: 'stimulus' }));
+  }, [saveAnalysisState, storeDispatch]);
+
+  useEffect(() => {
+    resetStimulusReplayState();
+  }, [currentStep, currentComponent, identifier, participantId, stimulusProvenanceGraph, resetStimulusReplayState]);
 
   const _setCurrentResponseNodes = useEvent((node: string | null, location: ResponseBlockLocation) => {
     const graph = answers[identifier]?.provenanceGraph[location];
-    if (graph && node) {
-      if (!currentGlobalNode || graph.nodes[node].createdOn > currentGlobalNode.time || playTime < currentGlobalNode.time) {
-        setCurrentGlobalNode({ name: node || '', time: graph.nodes[node].createdOn });
-      }
+    const graphNode = node ? graph?.nodes?.[node] : undefined;
+
+    if (graphNode) {
+      setCurrentGlobalNode((prevGlobalNode) => {
+        if (!prevGlobalNode || graphNode.createdOn > prevGlobalNode.time || playTime < prevGlobalNode.time) {
+          return { name: node || '', time: graphNode.createdOn };
+        }
+
+        return prevGlobalNode;
+      });
     }
 
-    setCurrentResponseNodes({ ...currentResponseNodes, [location]: node });
+    setCurrentResponseNodes((prevNodes) => ({ ...prevNodes, [location]: node || undefined }));
   });
 
   useUpdateProvenance('aboveStimulus', playTime, answers[identifier]?.provenanceGraph.aboveStimulus, currentResponseNodes.aboveStimulus, _setCurrentResponseNodes);
@@ -96,28 +120,29 @@ export function AudioProvenanceVis({ setTimeString }: { setTimeString: (time: st
 
   // Create an instance of trrack to ensure getState works, incase the saved state is not a full state node.
   useEffect(() => {
-    if (identifier && answers[identifier]?.provenanceGraph) {
-      const reg = Registry.create();
-
-      const trrack = initializeTrrack({ registry: reg, initialState: {} });
-
-      if (answers[identifier]?.provenanceGraph.stimulus) {
-        trrack.importObject(structuredClone(answers[identifier]?.provenanceGraph!.stimulus));
-
-        trrackForTrial.current = trrack;
-      }
+    if (!identifier || !stimulusProvenanceGraph) {
+      trrackForTrial.current = null;
+      return;
     }
-  }, [answers, identifier, storeDispatch]);
+
+    const reg = Registry.create();
+    const trrack = initializeTrrack({ registry: reg, initialState: {} });
+    trrack.importObject(structuredClone(stimulusProvenanceGraph));
+    trrackForTrial.current = trrack;
+  }, [identifier, stimulusProvenanceGraph]);
 
   const _setCurrentNode = useCallback((node: string | undefined) => {
     if (!node) {
       return;
     }
 
-    if (identifier && trrackForTrial.current) {
-      storeDispatch(saveAnalysisState({ prov: trrackForTrial.current.getState(answers[identifier]?.provenanceGraph.stimulus?.nodes[node]), location: 'stimulus' }));
+    const stimulusNode = answers[identifier]?.provenanceGraph.stimulus?.nodes?.[node];
 
+    if (identifier && trrackForTrial.current && stimulusNode) {
+      storeDispatch(saveAnalysisState({ prov: trrackForTrial.current.getState(stimulusNode), location: 'stimulus' }));
       trrackForTrial.current.to(node);
+    } else {
+      storeDispatch(saveAnalysisState({ prov: undefined, location: 'stimulus' }));
     }
 
     _setCurrentResponseNodes(node, 'stimulus');
@@ -126,12 +151,17 @@ export function AudioProvenanceVis({ setTimeString }: { setTimeString: (time: st
 
   // use effect to control the current provenance node based on the changing playtime.
   useEffect(() => {
-    if (!identifier || !trrackForTrial.current || !answers[identifier]?.provenanceGraph) {
+    if (!identifier || !answers[identifier]?.provenanceGraph) {
       return;
     }
     const provGraph = answers[identifier]?.provenanceGraph;
 
     if (!provGraph.stimulus) {
+      resetStimulusReplayState();
+      return;
+    }
+
+    if (!trrackForTrial.current) {
       return;
     }
 
@@ -161,7 +191,7 @@ export function AudioProvenanceVis({ setTimeString }: { setTimeString: (time: st
     if (tempNode.id !== currentNode) {
       _setCurrentNode(tempNode.id);
     }
-  }, [_setCurrentNode, currentNode, participantId, playTime, identifier, answers]);
+  }, [_setCurrentNode, currentNode, participantId, playTime, identifier, answers, resetStimulusReplayState]);
 
   const startTime = useMemo(() => answers[identifier]?.startTime || 0, [answers, identifier]);
 
@@ -276,7 +306,7 @@ export function AudioProvenanceVis({ setTimeString }: { setTimeString: (time: st
             </Box>
           ) : null}
 
-        {xScale && identifier && answers[identifier]?.provenanceGraph
+        {xScale && identifier && hasRenderableTimeline
           ? (
             <WithinTaskTimeline
               xScale={xScale}

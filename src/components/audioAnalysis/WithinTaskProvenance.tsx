@@ -5,7 +5,7 @@ import {
 } from '@mantine/core';
 import { useMemo } from 'react';
 import { TrrackedProvenance } from '../../store/types';
-import { getProvenanceNodeLegendLabel } from './provenanceLegendLabels';
+import { getProvenanceNodeLegendLabel, sanitizeLegendText } from './provenanceLegendLabels';
 
 const RECT_HEIGHT = 15;
 const RECT_WIDTH = 3;
@@ -31,12 +31,16 @@ export function WithinTaskProvenance({
       : null),
     [currentNode, provenance],
   );
+  const legendEntries = useMemo(
+    () => Array.from(colorMap.entries()).filter(([label]) => sanitizeLegendText(label).length > 0),
+    [colorMap],
+  );
 
   return (
     <g style={{ cursor: 'pointer' }}>
       {provenance ? Object.entries(provenance.nodes || {}).map((entry) => {
         const [nodeId, node] = entry;
-        const label = getProvenanceNodeLegendLabel(node);
+        const label = getProvenanceNodeLegendLabel(node) || 'Unlabeled Event';
 
         return (
           <g key={nodeId}>
@@ -54,7 +58,7 @@ export function WithinTaskProvenance({
       {currentNode && provenance && provenance.nodes[currentNode]
         ? (
           <rect
-            fill={colorMap.get(currentNodeLabel || '') || '#9498a0'}
+            fill={colorMap.get(currentNodeLabel || 'Unlabeled Event') || '#9498a0'}
             x={xScale(provenance.nodes[currentNode].createdOn) - RECT_WIDTH / 2}
             y={height / 2 - RECT_HEIGHT / 2}
             width={RECT_WIDTH}
@@ -71,9 +75,9 @@ export function WithinTaskProvenance({
             <Popover.Dropdown>
               <Stack>
                 {
-                  Array.from(colorMap.keys()).map((key) => (
+                  legendEntries.map(([key, color]) => (
                     <Group key={key}>
-                      <ColorSwatch color={colorMap.get(key) || '#9498a0'} />
+                      <ColorSwatch color={color || '#9498a0'} />
                       <span>{key}</span>
                     </Group>
                   ))
