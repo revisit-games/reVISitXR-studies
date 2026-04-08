@@ -87,6 +87,7 @@ Current behavior:
 - analysis mode, paused: the iframe allows temporary local desktop interaction
 - analysis mode, playing: the iframe blocks local interaction and applies recorded participant replay snapshots
 - analysis mode always suppresses new participant logging from viewer interactions
+- Example 1's adaptive panel height remains a live runtime convenience in Repo A; replayed panel transforms only change when authored panel interactions commit semantic scene state
 
 The current replay visuals are analysis-only:
 
