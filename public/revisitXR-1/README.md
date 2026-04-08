@@ -20,24 +20,29 @@ That manual copy step still applies after the replay-visual refinement. Repo B d
 
 ## Website Component Config
 
-`public/revisitXR-1/config.json` points the website stimulus at:
+`public/revisitXR-1/config.json` currently exposes two website trials:
 
-- `assets/reVISitXR/index.html`
+- `revisitxr-0`
+  Points at `assets/reVISitXR/index.html`
+- `revisitxr-1`
+  Points at `assets/reVISitXR/index.html?scene=1`
 
 Optional scene URLs now supported by Repo A:
 
 - `assets/reVISitXR/index.html`
   Default template scene
+- `assets/reVISitXR/index.html?scene=0`
+  Legacy Example 1 energy bar matrix
 - `assets/reVISitXR/index.html?scene=1`
-  Example 1 energy bar matrix
+  Demo 1 scatterplot navigation baseline
 - `assets/reVISitXR/index.html?scene=2`
   Example 2 placeholder
 - `assets/reVISitXR/index.html?scene=3`
   Example 3 placeholder
 
-`config.json` stays on the default path in this round. Repo B simply embeds whichever Repo A URL you choose.
+Repo B stays intentionally thin in this round. It just points at the right built Repo A URL and lists whichever reactive ids the study sidebar should surface.
 
-The current reactive response ids are:
+The generic XR reactive response ids are:
 
 - `xrMode`
 - `xrInteractionPhase`
@@ -46,7 +51,41 @@ The current reactive response ids are:
 - `xrLastEvent`
 - `xrStateSummaryJson`
 
-Those ids must continue to match `buildAnswerPayload()` in Repo A.
+`revisitxr-1` also exposes Demo 1 scene-specific reactive ids:
+
+- `xrDemoId`
+- `xrTaskId`
+- `xrNavMode`
+- `xrOverviewVisible`
+- `xrOverviewToggleCount`
+- `xrScaleFactor`
+- `xrSelectedPointCount`
+- `xrSelectedPointIdsJson`
+- `xrLastSelectedPointId`
+
+Those ids must continue to match `buildAnswerPayload()` plus the active scene controller's `getAnswerSummary()` hook in Repo A.
+
+## Demo 1 Local Data Bundle
+
+Demo 1 uses only local files that live inside Repo A under `demo1/data/` after preparation:
+
+- `demo1/data/gdp-per-capita-worldbank.csv`
+- `demo1/data/gdp-per-capita-worldbank.metadata.json`
+- `demo1/data/life-expectancy.csv`
+- `demo1/data/life-expectancy.metadata.json`
+- `demo1/data/co-emissions-per-capita.csv`
+- `demo1/data/co-emissions-per-capita.metadata.json`
+- optional `demo1/data/population-unwpp.csv`
+- optional `demo1/data/population-unwpp.metadata.json`
+
+The recommended prep workflow is:
+
+1. Place the downloaded OWID files in Repo A.
+2. Keep them under `demo1/data/`.
+3. Rebuild Repo A.
+4. Copy Repo A `dist/` into `public/revisitXR-1/assets/reVISitXR/`.
+
+There are no runtime OWID network fetches in Demo 1. If a required local file is missing, the scene shows an explanatory fallback panel instead of rendering the scatterplot.
 
 ## How Analysis Control Reaches The Iframe
 
@@ -87,6 +126,7 @@ Current behavior:
 - analysis mode, paused: the iframe allows temporary local desktop interaction
 - analysis mode, playing: the iframe blocks local interaction and applies recorded participant replay snapshots
 - analysis mode always suppresses new participant logging from viewer interactions
+- Demo 1 replay restores semantic scatterplot state such as nav mode, overview visibility, scale, selection, and task submission instead of replaying per-point motion
 - Example 1's adaptive panel height remains a live runtime convenience in Repo A; replayed panel transforms only change when authored panel interactions commit semantic scene state
 
 The current replay visuals are analysis-only:
@@ -129,6 +169,7 @@ If replay timelines become too dense or immersive interaction starts dropping fr
 - `logging/xrSerialization.js`
 - `logging/xrStudyLogger.js`
 - `scenes/core/sceneRegistry.js`
+- `demo1/`
 - `example1/`
 
 Timeline density is primarily a Repo A logging-policy issue. Repo B only adds a lightweight runtime normalization layer for legend display labels and shared color categories.
@@ -172,8 +213,10 @@ Repo ownership for this package:
 2. Copy Repo A `dist/` contents into `public/revisitXR-1/assets/reVISitXR/`.
 3. Rebuild or rerun Repo B.
 4. Open `revisitXR-1` in study mode and verify reactive summaries.
-5. If you want an authored scene instead of the template, point the website component at `assets/reVISitXR/index.html?scene=1`, `?scene=2`, or `?scene=3`.
-6. Open analysis replay and verify play/pause interaction plus replay pointer visuals.
-7. Verify the `USER SIGHT` avatar appears only in analysis replay and follows the replayed participant pose.
-8. Verify the orange paused banner and border appear only while replay is paused and local free-camera movement is allowed.
-9. Confirm that paused analyst interaction still does not create new participant provenance or extra reactive answers.
+5. If you want the paper-facing scatterplot, point the website component at `assets/reVISitXR/index.html?scene=1`.
+6. If you want the legacy energy demo, use `assets/reVISitXR/index.html?scene=0`.
+7. If you want a placeholder scene, use `?scene=2` or `?scene=3`.
+8. Open analysis replay and verify play/pause interaction plus replay pointer visuals.
+9. Verify the `USER SIGHT` avatar appears only in analysis replay and follows the replayed participant pose.
+10. Verify the orange paused banner and border appear only while replay is paused and local free-camera movement is allowed.
+11. Confirm that paused analyst interaction still does not create new participant provenance or extra reactive answers.
