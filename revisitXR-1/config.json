@@ -129,7 +129,7 @@
       "instruction": "",
       "type": "website",
       "nextButtonLocation": "sidebar",
-      "path": "revisitXR-1/assets/reVISitXR/index.html",
+      "path": "revisitXR-1/assets/reVISitXR/index.html?scene=0",
       "response": [
         {
           "id": "xrMode",
@@ -214,6 +214,69 @@
         {
           "id": "xrLastEvent",
           "prompt": "Last event",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrDemoId",
+          "prompt": "Demo id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrTaskId",
+          "prompt": "Task id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrNavMode",
+          "prompt": "Nav mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrOverviewVisible",
+          "prompt": "Overview visible",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrOverviewToggleCount",
+          "prompt": "Overview toggles",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrScaleFactor",
+          "prompt": "Scale factor",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrSelectedPointCount",
+          "prompt": "Selected point count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrSelectedPointIdsJson",
+          "prompt": "Selected point ids",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrLastSelectedPointId",
+          "prompt": "Last selected point",
           "location": "sidebar",
           "type": "reactive",
           "required": false
@@ -335,13 +398,13 @@
     "authors": [
       "Shano Liang, Max Chen, Lane Harrison"
     ],
-    "date": "2026-04-03",
+    "date": "2026-04-08",
     "description": "",
     "organizations": [
       "VIEW Lab, WPI"
     ],
-    "title": "reVISitXR 1 (v1.2)",
-    "version": "1.2"
+    "title": "reVISitXR 1 (v1.3)",
+    "version": "1.3"
   },
   "uiConfig": {
     "contactEmail": "sliang1@wpi.edu",
