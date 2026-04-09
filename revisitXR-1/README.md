@@ -20,12 +20,14 @@ That manual copy step still applies after the replay-visual refinement. Repo B d
 
 ## Website Component Config
 
-`public/revisitXR-1/config.json` currently exposes two website trials:
+`public/revisitXR-1/config.json` currently exposes three website trials:
 
 - `revisitxr-0`
   Points at `assets/reVISitXR/index.html`
 - `revisitxr-1`
   Points at `assets/reVISitXR/index.html?scene=1`
+- `revisitxr-2`
+  Points at `assets/reVISitXR/index.html?scene=2`
 
 Optional scene URLs now supported by Repo A:
 
@@ -36,7 +38,7 @@ Optional scene URLs now supported by Repo A:
 - `assets/reVISitXR/index.html?scene=1`
   Demo 1 scatterplot navigation baseline
 - `assets/reVISitXR/index.html?scene=2`
-  Example 2 placeholder
+  Demo 2 migration globe baseline
 - `assets/reVISitXR/index.html?scene=3`
   Example 3 placeholder
 
@@ -62,6 +64,20 @@ The generic XR reactive response ids are:
 - `xrSelectedPointCount`
 - `xrSelectedPointIdsJson`
 - `xrLastSelectedPointId`
+
+`revisitxr-2` exposes Demo 2 geo-specific reactive ids:
+
+- `xrDemoId`
+- `xrTaskId`
+- `xrGeoYear`
+- `xrGeoDirectionMode`
+- `xrGeoThreshold`
+- `xrGeoFocusedCountryId`
+- `xrGeoSelectedNodeId`
+- `xrGeoSelectedFlowId`
+- `xrGeoVisibleFlowCount`
+- `xrGeoLabelsVisible`
+- `xrGeoGlobeYawDeg`
 
 Those ids must continue to match `buildAnswerPayload()` plus the active scene controller's `getAnswerSummary()` hook in Repo A.
 
@@ -214,9 +230,10 @@ Repo ownership for this package:
 3. Rebuild or rerun Repo B.
 4. Open `revisitXR-1` in study mode and verify reactive summaries.
 5. If you want the paper-facing scatterplot, point the website component at `assets/reVISitXR/index.html?scene=1`.
-6. If you want the legacy energy demo, use `assets/reVISitXR/index.html?scene=0`.
-7. If you want a placeholder scene, use `?scene=2` or `?scene=3`.
-8. Open analysis replay and verify play/pause interaction plus replay pointer visuals.
-9. Verify the `USER SIGHT` avatar appears only in analysis replay and follows the replayed participant pose.
+6. If you want the migration globe baseline, use `assets/reVISitXR/index.html?scene=2`.
+7. If you want the legacy energy demo, use `assets/reVISitXR/index.html?scene=0`.
+8. If you want a placeholder scene, use `?scene=3`.
+9. Open analysis replay and verify play/pause interaction plus replay pointer visuals.
+10. Verify the `USER SIGHT` avatar appears only in analysis replay and follows the replayed participant pose.
 10. Verify the orange paused banner and border appear only while replay is paused and local free-camera movement is allowed.
 11. Confirm that paused analyst interaction still does not create new participant provenance or extra reactive answers.
