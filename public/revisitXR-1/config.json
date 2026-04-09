@@ -292,6 +292,135 @@
       "correctAnswer": [],
       "instructionLocation": "sidebar"
     },
+    "revisitxr-2": {
+      "instruction": "",
+      "type": "website",
+      "nextButtonLocation": "sidebar",
+      "path": "revisitXR-1/assets/reVISitXR/index.html?scene=2",
+      "response": [
+        {
+          "id": "xrMode",
+          "prompt": "XR mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrInteractionPhase",
+          "prompt": "Interaction phase",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGrabCount",
+          "prompt": "Grab count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrSessionCount",
+          "prompt": "Session count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrLastEvent",
+          "prompt": "Last event",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrDemoId",
+          "prompt": "Demo id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrTaskId",
+          "prompt": "Task id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGeoYear",
+          "prompt": "Geo year",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGeoDirectionMode",
+          "prompt": "Direction mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGeoThreshold",
+          "prompt": "Flow threshold",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGeoFocusedCountryId",
+          "prompt": "Focused country",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGeoSelectedNodeId",
+          "prompt": "Selected node",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGeoSelectedFlowId",
+          "prompt": "Selected flow",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGeoVisibleFlowCount",
+          "prompt": "Visible flow count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGeoLabelsVisible",
+          "prompt": "Labels visible",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGeoGlobeYawDeg",
+          "prompt": "Globe yaw",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrStateSummaryJson",
+          "prompt": "State summary",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        }
+      ],
+      "correctAnswer": [],
+      "instructionLocation": "sidebar"
+    },
     "Demographics Intro": {
       "correctAnswer": [],
       "path": "revisitXR-1/assets/demographics-intro.md",
@@ -389,6 +518,7 @@
       },
       "revisitxr-0",
       "revisitxr-1",
+      "revisitxr-2",
       "Demographics Intro",
       "Demographics Information"
     ],
@@ -403,8 +533,8 @@
     "organizations": [
       "VIEW Lab, WPI"
     ],
-    "title": "reVISitXR 1 (v1.32)",
-    "version": "1.32"
+    "title": "reVISitXR 1 (v1.4)",
+    "version": "1.4"
   },
   "uiConfig": {
     "contactEmail": "sliang1@wpi.edu",
