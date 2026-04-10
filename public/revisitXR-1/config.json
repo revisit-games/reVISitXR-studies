@@ -404,6 +404,13 @@
           "required": false
         },
         {
+          "id": "xrGeoMapDisplayMode",
+          "prompt": "Map display mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
           "id": "xrGeoGlobeYawDeg",
           "prompt": "Globe yaw",
           "location": "sidebar",
@@ -533,8 +540,8 @@
     "organizations": [
       "VIEW Lab, WPI"
     ],
-    "title": "reVISitXR 1 (v1.51)",
-    "version": "1.51"
+    "title": "reVISitXR 1 (v1.52)",
+    "version": "1.52"
   },
   "uiConfig": {
     "contactEmail": "sliang1@wpi.edu",

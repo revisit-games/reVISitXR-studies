@@ -39,6 +39,10 @@ Optional scene URLs now supported by Repo A:
   Demo 1 scatterplot navigation baseline
 - `assets/reVISitXR/index.html?scene=2`
   Demo 2 migration globe baseline
+- `assets/reVISitXR/index.html?scene=2&map=flat`
+  Demo 2 migration flat-map view
+- `assets/reVISitXR/index.html?scene=2&map=both`
+  Demo 2 globe and flat-map view
 - `assets/reVISitXR/index.html?scene=3`
   Example 3 placeholder
 
@@ -77,9 +81,12 @@ The generic XR reactive response ids are:
 - `xrGeoSelectedFlowId`
 - `xrGeoVisibleFlowCount`
 - `xrGeoLabelsVisible`
+- `xrGeoMapDisplayMode`
 - `xrGeoGlobeYawDeg`
 
 Those ids must continue to match `buildAnswerPayload()` plus the active scene controller's `getAnswerSummary()` hook in Repo A.
+
+Demo 2 also accepts `map=globe|flat|both` in its website URL. The default study URL remains `assets/reVISitXR/index.html?scene=2`, which starts in `globe` mode; the panel button can cycle the map mode during the task, and `xrGeoMapDisplayMode` captures the active mode as a reactive answer.
 
 ## Demo 1 Local Data Bundle
 
