@@ -119,6 +119,8 @@ Demo 3 is the multi-view analytic workspace trial. It uses the same Repo A ifram
 - `xrTaskId`
 - `xrArPlacementConfirmed`
 - `xrArPlacementMode`
+- `xrArPlacementSource`
+- `xrArSurfaceDetected`
 - `xrArMetricId`
 - `xrArTimeIndex`
 - `xrArLayerMode`
@@ -126,10 +128,13 @@ Demo 3 is the multi-view analytic workspace trial. It uses the same Repo A ifram
 - `xrArSelectedSiteId`
 - `xrArFocusedSiteId`
 - `xrArDetailExpanded`
+- `xrArInteractionModality`
+- `xrArGazeDwellCount`
+- `xrArHandSelectCount`
 - `xrArVisibleSiteCount`
 - `xrArAnchorTransformJson`
 
-Demo 4 is the Campus Commons Monitoring Overlay trial. It asks participants to place an AR-first footprint, inspect local site markers, switch metric and time slice, and submit the site with the highest midday CO2 reading. The fixed study sequence places `revisitxr-4` after `revisitxr-3` and before the demographics pages.
+Demo 4 is the Campus Commons Monitoring Overlay trial. It asks participants to place an AR-first footprint, inspect local site markers, switch metric and time slice, use gaze-dwell or hand-ray activation, and submit the site with the highest midday CO2 reading. The fixed study sequence places `revisitxr-4` after `revisitxr-3` and before the demographics pages.
 
 ## Demo 1 Local Data Bundle
 

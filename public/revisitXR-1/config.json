@@ -620,6 +620,20 @@
           "required": false
         },
         {
+          "id": "xrArPlacementSource",
+          "prompt": "AR placement source",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArSurfaceDetected",
+          "prompt": "AR surface detected",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
           "id": "xrArMetricId",
           "prompt": "AR metric",
           "location": "sidebar",
@@ -664,6 +678,27 @@
         {
           "id": "xrArDetailExpanded",
           "prompt": "AR detail expanded",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArInteractionModality",
+          "prompt": "AR interaction modality",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArGazeDwellCount",
+          "prompt": "AR gaze dwell count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArHandSelectCount",
+          "prompt": "AR hand select count",
           "location": "sidebar",
           "type": "reactive",
           "required": false
@@ -807,8 +842,8 @@
     "organizations": [
       "VIEW Lab, WPI"
     ],
-    "title": "reVISitXR 1 (v1.7)",
-    "version": "1.7"
+    "title": "reVISitXR 1 (v1.71)",
+    "version": "1.71"
   },
   "uiConfig": {
     "contactEmail": "sliang1@wpi.edu",
