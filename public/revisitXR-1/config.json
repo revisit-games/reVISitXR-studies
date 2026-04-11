@@ -428,6 +428,128 @@
       "correctAnswer": [],
       "instructionLocation": "sidebar"
     },
+    "revisitxr-3": {
+      "instruction": "",
+      "type": "website",
+      "nextButtonLocation": "sidebar",
+      "path": "revisitXR-1/assets/reVISitXR/index.html?scene=3",
+      "response": [
+        {
+          "id": "xrMode",
+          "prompt": "XR mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrInteractionPhase",
+          "prompt": "Interaction phase",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGrabCount",
+          "prompt": "Grab count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrSessionCount",
+          "prompt": "Session count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrLastEvent",
+          "prompt": "Last event",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrDemoId",
+          "prompt": "Demo id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrTaskId",
+          "prompt": "Task id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrWorkspaceLayoutMode",
+          "prompt": "Workspace layout mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrWorkspaceFocusedViewId",
+          "prompt": "Focused workspace view",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrWorkspaceSelectedViewId",
+          "prompt": "Selected workspace view",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrWorkspaceSelectedDatumId",
+          "prompt": "Selected workspace datum",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrWorkspaceLinkedHighlight",
+          "prompt": "Linked highlighting",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrWorkspaceVisibleViewIdsJson",
+          "prompt": "Visible workspace views",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrWorkspacePinnedViewIdsJson",
+          "prompt": "Pinned workspace views",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrWorkspacePanelLayoutJson",
+          "prompt": "Workspace panel layout",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrStateSummaryJson",
+          "prompt": "State summary",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        }
+      ],
+      "correctAnswer": [],
+      "instructionLocation": "sidebar"
+    },
     "Demographics Intro": {
       "correctAnswer": [],
       "path": "revisitXR-1/assets/demographics-intro.md",
@@ -526,6 +648,7 @@
       "revisitxr-0",
       "revisitxr-1",
       "revisitxr-2",
+      "revisitxr-3",
       "Demographics Intro",
       "Demographics Information"
     ],
@@ -540,8 +663,8 @@
     "organizations": [
       "VIEW Lab, WPI"
     ],
-    "title": "reVISitXR 1 (v1.52)",
-    "version": "1.52"
+    "title": "reVISitXR 1 (v1.6)",
+    "version": "1.6"
   },
   "uiConfig": {
     "contactEmail": "sliang1@wpi.edu",
