@@ -550,6 +550,149 @@
       "correctAnswer": [],
       "instructionLocation": "sidebar"
     },
+    "revisitxr-4": {
+      "instruction": "",
+      "type": "website",
+      "nextButtonLocation": "sidebar",
+      "path": "revisitXR-1/assets/reVISitXR/index.html?scene=4",
+      "response": [
+        {
+          "id": "xrMode",
+          "prompt": "XR mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrInteractionPhase",
+          "prompt": "Interaction phase",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGrabCount",
+          "prompt": "Grab count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrSessionCount",
+          "prompt": "Session count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrLastEvent",
+          "prompt": "Last event",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrDemoId",
+          "prompt": "Demo id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrTaskId",
+          "prompt": "Task id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArPlacementConfirmed",
+          "prompt": "AR placement confirmed",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArPlacementMode",
+          "prompt": "AR placement mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArMetricId",
+          "prompt": "AR metric",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArTimeIndex",
+          "prompt": "AR time index",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArLayerMode",
+          "prompt": "AR layer mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArLabelsVisible",
+          "prompt": "AR labels visible",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArSelectedSiteId",
+          "prompt": "AR selected site",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArFocusedSiteId",
+          "prompt": "AR focused site",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArDetailExpanded",
+          "prompt": "AR detail expanded",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArVisibleSiteCount",
+          "prompt": "AR visible site count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrArAnchorTransformJson",
+          "prompt": "AR anchor transform",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrStateSummaryJson",
+          "prompt": "State summary",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        }
+      ],
+      "correctAnswer": [],
+      "instructionLocation": "sidebar"
+    },
     "Demographics Intro": {
       "correctAnswer": [],
       "path": "revisitXR-1/assets/demographics-intro.md",
@@ -649,6 +792,7 @@
       "revisitxr-1",
       "revisitxr-2",
       "revisitxr-3",
+      "revisitxr-4",
       "Demographics Intro",
       "Demographics Information"
     ],
@@ -663,8 +807,8 @@
     "organizations": [
       "VIEW Lab, WPI"
     ],
-    "title": "reVISitXR 1 (v1.65)",
-    "version": "1.65"
+    "title": "reVISitXR 1 (v1.7)",
+    "version": "1.7"
   },
   "uiConfig": {
     "contactEmail": "sliang1@wpi.edu",

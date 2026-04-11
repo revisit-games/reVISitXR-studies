@@ -20,7 +20,7 @@ That manual copy step still applies after the replay-visual refinement. Repo B d
 
 ## Website Component Config
 
-`public/revisitXR-1/config.json` currently exposes four website trials:
+`public/revisitXR-1/config.json` currently exposes five website trials:
 
 - `revisitxr-0`
   Points at `assets/reVISitXR/index.html`
@@ -30,6 +30,8 @@ That manual copy step still applies after the replay-visual refinement. Repo B d
   Points at `assets/reVISitXR/index.html?scene=2`
 - `revisitxr-3`
   Points at `assets/reVISitXR/index.html?scene=3`
+- `revisitxr-4`
+  Points at `assets/reVISitXR/index.html?scene=4`
 
 Optional scene URLs now supported by Repo A:
 
@@ -51,6 +53,8 @@ Optional scene URLs now supported by Repo A:
   Demo 3 focused workspace layout
 - `assets/reVISitXR/index.html?scene=3&layout=surround`
   Demo 3 surrounding workspace layout
+- `assets/reVISitXR/index.html?scene=4`
+  Demo 4 situated AR campus monitoring overlay
 
 Repo B stays intentionally thin in this round. It just points at the right built Repo A URL and lists whichever reactive ids the study sidebar should surface.
 
@@ -109,6 +113,24 @@ Demo 2 also accepts `map=globe|flat|both` in its website URL. The default study 
 
 Demo 3 is the multi-view analytic workspace trial. It uses the same Repo A iframe bridge and semantic replay pipeline, but the scene state is workspace-level provenance: layout mode, panel transforms, focused and selected view, linked region selection, pinned views, and task submission. The fixed study sequence places `revisitxr-3` after `revisitxr-2` and before the demographics pages.
 
+`revisitxr-4` exposes Demo 4 situated AR overlay reactive ids:
+
+- `xrDemoId`
+- `xrTaskId`
+- `xrArPlacementConfirmed`
+- `xrArPlacementMode`
+- `xrArMetricId`
+- `xrArTimeIndex`
+- `xrArLayerMode`
+- `xrArLabelsVisible`
+- `xrArSelectedSiteId`
+- `xrArFocusedSiteId`
+- `xrArDetailExpanded`
+- `xrArVisibleSiteCount`
+- `xrArAnchorTransformJson`
+
+Demo 4 is the Campus Commons Monitoring Overlay trial. It asks participants to place an AR-first footprint, inspect local site markers, switch metric and time slice, and submit the site with the highest midday CO2 reading. The fixed study sequence places `revisitxr-4` after `revisitxr-3` and before the demographics pages.
+
 ## Demo 1 Local Data Bundle
 
 Demo 1 uses only local files that live inside Repo A under `demo1/data/` after preparation:
@@ -145,6 +167,16 @@ Demo 3 uses copied local OWID files that live inside Repo A under `demo3/data/`:
 - `demo3/data/population-unwpp.metadata.json`
 
 The Demo 3 loader joins country-year rows by 3-letter ISO code, uses OWID region labels from the GDP file, and computes population-weighted regional aggregates for the representative task. The current copied bundle supports the `2000` to `2023` comparison window and requires no runtime downloads.
+
+## Demo 4 Local Data Bundle
+
+Demo 4 uses a deterministic local JSON bundle in Repo A:
+
+- `demo4/data/siteReadings.json`
+
+The bundle defines six campus sites, local overlay coordinates, three time slices, and three metrics: occupancy, noise, and CO2. The default task answer is `site:classroom` for the highest midday CO2 reading. Demo 4 does not require geolocation, external APIs, network data, or real-world mesh reconstruction.
+
+This Repo B package only points at the built Repo A website URL and declares the reactive ids. It does not build, bundle, or automatically copy Repo A assets.
 
 ## How Analysis Control Reaches The Iframe
 
