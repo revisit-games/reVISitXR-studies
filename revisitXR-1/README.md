@@ -20,7 +20,7 @@ That manual copy step still applies after the replay-visual refinement. Repo B d
 
 ## Website Component Config
 
-`public/revisitXR-1/config.json` currently exposes three website trials:
+`public/revisitXR-1/config.json` currently exposes four website trials:
 
 - `revisitxr-0`
   Points at `assets/reVISitXR/index.html`
@@ -28,6 +28,8 @@ That manual copy step still applies after the replay-visual refinement. Repo B d
   Points at `assets/reVISitXR/index.html?scene=1`
 - `revisitxr-2`
   Points at `assets/reVISitXR/index.html?scene=2`
+- `revisitxr-3`
+  Points at `assets/reVISitXR/index.html?scene=3`
 
 Optional scene URLs now supported by Repo A:
 
@@ -44,7 +46,11 @@ Optional scene URLs now supported by Repo A:
 - `assets/reVISitXR/index.html?scene=2&map=both`
   Demo 2 globe and flat-map view
 - `assets/reVISitXR/index.html?scene=3`
-  Example 3 placeholder
+  Demo 3 immersive analytic workspace
+- `assets/reVISitXR/index.html?scene=3&layout=focus`
+  Demo 3 focused workspace layout
+- `assets/reVISitXR/index.html?scene=3&layout=surround`
+  Demo 3 surrounding workspace layout
 
 Repo B stays intentionally thin in this round. It just points at the right built Repo A URL and lists whichever reactive ids the study sidebar should surface.
 
@@ -88,6 +94,21 @@ Those ids must continue to match `buildAnswerPayload()` plus the active scene co
 
 Demo 2 also accepts `map=globe|flat|both` in its website URL. The default study URL remains `assets/reVISitXR/index.html?scene=2`, which starts in `globe` mode; the panel button can cycle the map mode during the task, and `xrGeoMapDisplayMode` captures the active mode as a reactive answer.
 
+`revisitxr-3` exposes Demo 3 workspace-specific reactive ids:
+
+- `xrDemoId`
+- `xrTaskId`
+- `xrWorkspaceLayoutMode`
+- `xrWorkspaceFocusedViewId`
+- `xrWorkspaceSelectedViewId`
+- `xrWorkspaceSelectedDatumId`
+- `xrWorkspaceLinkedHighlight`
+- `xrWorkspaceVisibleViewIdsJson`
+- `xrWorkspacePinnedViewIdsJson`
+- `xrWorkspacePanelLayoutJson`
+
+Demo 3 is the multi-view analytic workspace trial. It uses the same Repo A iframe bridge and semantic replay pipeline, but the scene state is workspace-level provenance: layout mode, panel transforms, focused and selected view, linked region selection, pinned views, and task submission. The fixed study sequence places `revisitxr-3` after `revisitxr-2` and before the demographics pages.
+
 ## Demo 1 Local Data Bundle
 
 Demo 1 uses only local files that live inside Repo A under `demo1/data/` after preparation:
@@ -109,6 +130,21 @@ The recommended prep workflow is:
 4. Copy Repo A `dist/` into `public/revisitXR-1/assets/reVISitXR/`.
 
 There are no runtime OWID network fetches in Demo 1. If a required local file is missing, the scene shows an explanatory fallback panel instead of rendering the scatterplot.
+
+## Demo 3 Local Data Bundle
+
+Demo 3 uses copied local OWID files that live inside Repo A under `demo3/data/`:
+
+- `demo3/data/gdp-per-capita-worldbank.csv`
+- `demo3/data/gdp-per-capita-worldbank.metadata.json`
+- `demo3/data/life-expectancy.csv`
+- `demo3/data/life-expectancy.metadata.json`
+- `demo3/data/co-emissions-per-capita.csv`
+- `demo3/data/co-emissions-per-capita.metadata.json`
+- `demo3/data/population-unwpp.csv`
+- `demo3/data/population-unwpp.metadata.json`
+
+The Demo 3 loader joins country-year rows by 3-letter ISO code, uses OWID region labels from the GDP file, and computes population-weighted regional aggregates for the representative task. The current copied bundle supports the `2000` to `2023` comparison window and requires no runtime downloads.
 
 ## How Analysis Control Reaches The Iframe
 
@@ -150,6 +186,7 @@ Current behavior:
 - analysis mode, playing: the iframe blocks local interaction and applies recorded participant replay snapshots
 - analysis mode always suppresses new participant logging from viewer interactions
 - Demo 1 replay restores semantic scatterplot state such as nav mode, overview visibility, scale, selection, and task submission instead of replaying per-point motion
+- Demo 3 replay restores semantic workspace state such as layout mode, panel transforms, focus, selected datum, linked highlighting, pinned panels, and task submission instead of replaying raw drag motion
 - Example 1's adaptive panel height remains a live runtime convenience in Repo A; replayed panel transforms only change when authored panel interactions commit semantic scene state
 
 The current replay visuals are analysis-only:
@@ -193,6 +230,7 @@ If replay timelines become too dense or immersive interaction starts dropping fr
 - `logging/xrStudyLogger.js`
 - `scenes/core/sceneRegistry.js`
 - `demo1/`
+- `demo3/`
 - `example1/`
 
 Timeline density is primarily a Repo A logging-policy issue. Repo B only adds a lightweight runtime normalization layer for legend display labels and shared color categories.
@@ -238,9 +276,9 @@ Repo ownership for this package:
 4. Open `revisitXR-1` in study mode and verify reactive summaries.
 5. If you want the paper-facing scatterplot, point the website component at `assets/reVISitXR/index.html?scene=1`.
 6. If you want the migration globe baseline, use `assets/reVISitXR/index.html?scene=2`.
-7. If you want the legacy energy demo, use `assets/reVISitXR/index.html?scene=0`.
-8. If you want a placeholder scene, use `?scene=3`.
+7. If you want the analytic workspace, use `assets/reVISitXR/index.html?scene=3`.
+8. If you want the legacy energy demo, use `assets/reVISitXR/index.html?scene=0`.
 9. Open analysis replay and verify play/pause interaction plus replay pointer visuals.
 10. Verify the `USER SIGHT` avatar appears only in analysis replay and follows the replayed participant pose.
-10. Verify the orange paused banner and border appear only while replay is paused and local free-camera movement is allowed.
-11. Confirm that paused analyst interaction still does not create new participant provenance or extra reactive answers.
+11. Verify the orange paused banner and border appear only while replay is paused and local free-camera movement is allowed.
+12. Confirm that paused analyst interaction still does not create new participant provenance or extra reactive answers.
