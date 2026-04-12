@@ -20,7 +20,7 @@ That manual copy step still applies after the replay-visual refinement. Repo B d
 
 ## Website Component Config
 
-`public/revisitXR-1/config.json` currently exposes five website trials:
+`public/revisitXR-1/config.json` currently exposes six website trials:
 
 - `revisitxr-0`
   Points at `assets/reVISitXR/index.html`
@@ -32,6 +32,8 @@ That manual copy step still applies after the replay-visual refinement. Repo B d
   Points at `assets/reVISitXR/index.html?scene=3`
 - `revisitxr-4`
   Points at `assets/reVISitXR/index.html?scene=4`
+- `revisitxr-5`
+  Points at `assets/reVISitXR/index.html?scene=5`
 
 Optional scene URLs now supported by Repo A:
 
@@ -55,6 +57,8 @@ Optional scene URLs now supported by Repo A:
   Demo 3 surrounding workspace layout
 - `assets/reVISitXR/index.html?scene=4`
   Demo 4 situated AR campus monitoring overlay
+- `assets/reVISitXR/index.html?scene=5`
+  Demo 5 landmark scale visceralization
 
 Repo B stays intentionally thin in this round. It just points at the right built Repo A URL and lists whichever reactive ids the study sidebar should surface.
 
@@ -111,7 +115,7 @@ Demo 2 also accepts `map=globe|flat|both` in its website URL. The default study 
 - `xrWorkspacePinnedViewIdsJson`
 - `xrWorkspacePanelLayoutJson`
 
-Demo 3 is the multi-view analytic workspace trial. It uses the same Repo A iframe bridge and semantic replay pipeline, but the scene state is workspace-level provenance: layout mode, panel transforms, focused and selected view, linked region selection, pinned views, and task submission. The fixed study sequence places `revisitxr-3` after `revisitxr-2` and before the demographics pages.
+Demo 3 is the multi-view analytic workspace trial. It uses the same Repo A iframe bridge and semantic replay pipeline, but the scene state is workspace-level provenance: layout mode, panel transforms, focused and selected view, linked region selection, pinned views, and task submission. The fixed study sequence places `revisitxr-3` after `revisitxr-2` and before `revisitxr-4`.
 
 `revisitxr-4` exposes Demo 4 situated AR overlay reactive ids:
 
@@ -134,7 +138,25 @@ Demo 3 is the multi-view analytic workspace trial. It uses the same Repo A ifram
 - `xrArVisibleSiteCount`
 - `xrArAnchorTransformJson`
 
-Demo 4 is the Campus Commons Monitoring Overlay trial. It asks participants to place an AR-first footprint, inspect local site markers, switch metric and time slice, use gaze-dwell or hand-ray activation, and submit the site with the highest midday CO2 reading. The fixed study sequence places `revisitxr-4` after `revisitxr-3` and before the demographics pages.
+Demo 4 is the Campus Commons Monitoring Overlay trial. It asks participants to place an AR-first footprint, inspect local site markers, switch metric and time slice, use gaze-dwell or hand-ray activation, and submit the site with the highest midday CO2 reading. The fixed study sequence places `revisitxr-4` after `revisitxr-3` and before `revisitxr-5`.
+
+`revisitxr-5` exposes Demo 5 landmark scale reactive ids:
+
+- `xrDemoId`
+- `xrTaskId`
+- `xrVisceralLandmarkSetId`
+- `xrVisceralSelectedLandmarkId`
+- `xrVisceralComparisonMode`
+- `xrVisceralViewpointPresetId`
+- `xrVisceralAnnotationsVisible`
+- `xrVisceralHumanReferenceVisible`
+- `xrVisceralShadowCueVisible`
+- `xrVisceralRulerCueVisible`
+- `xrVisceralQuantLabelsVisible`
+- `xrVisceralStateSummaryJson`
+- `xrStateSummaryJson`
+
+Demo 5 is the Landmark Scale Visceralization trial. It asks participants to compare authored landmark scale views and submit the tallest landmark. The fixed study sequence places `revisitxr-5` after `revisitxr-4` and before the demographics pages.
 
 ## Demo 1 Local Data Bundle
 

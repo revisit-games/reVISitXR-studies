@@ -728,6 +728,142 @@
       "correctAnswer": [],
       "instructionLocation": "sidebar"
     },
+    "revisitxr-5": {
+      "instruction": "",
+      "type": "website",
+      "nextButtonLocation": "sidebar",
+      "path": "revisitXR-1/assets/reVISitXR/index.html?scene=5",
+      "response": [
+        {
+          "id": "xrMode",
+          "prompt": "XR mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrInteractionPhase",
+          "prompt": "Interaction phase",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGrabCount",
+          "prompt": "Grab count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrSessionCount",
+          "prompt": "Session count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrLastEvent",
+          "prompt": "Last event",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrDemoId",
+          "prompt": "Demo id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrTaskId",
+          "prompt": "Task id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrVisceralLandmarkSetId",
+          "prompt": "Visceral landmark set",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrVisceralSelectedLandmarkId",
+          "prompt": "Selected landmark",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrVisceralComparisonMode",
+          "prompt": "Comparison mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrVisceralViewpointPresetId",
+          "prompt": "Viewpoint preset",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrVisceralAnnotationsVisible",
+          "prompt": "Annotations visible",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrVisceralHumanReferenceVisible",
+          "prompt": "Human references visible",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrVisceralShadowCueVisible",
+          "prompt": "Shadow cues visible",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrVisceralRulerCueVisible",
+          "prompt": "Ruler cues visible",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrVisceralQuantLabelsVisible",
+          "prompt": "Quant labels visible",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrVisceralStateSummaryJson",
+          "prompt": "Visceral state summary",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrStateSummaryJson",
+          "prompt": "State summary",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        }
+      ],
+      "correctAnswer": [],
+      "instructionLocation": "sidebar"
+    },
     "Demographics Intro": {
       "correctAnswer": [],
       "path": "revisitXR-1/assets/demographics-intro.md",
@@ -828,6 +964,7 @@
       "revisitxr-2",
       "revisitxr-3",
       "revisitxr-4",
+      "revisitxr-5",
       "Demographics Intro",
       "Demographics Information"
     ],
@@ -837,13 +974,13 @@
     "authors": [
       "Shano Liang, Max Chen, Lane Harrison"
     ],
-    "date": "2026-04-11",
+    "date": "2026-04-12",
     "description": "",
     "organizations": [
       "VIEW Lab, WPI"
     ],
-    "title": "reVISitXR 1 (v1.76)",
-    "version": "1.76"
+    "title": "reVISitXR 1 (v1.8)",
+    "version": "1.8"
   },
   "uiConfig": {
     "contactEmail": "sliang1@wpi.edu",
