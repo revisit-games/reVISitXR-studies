@@ -20,7 +20,7 @@ That manual copy step still applies after the replay-visual refinement. Repo B d
 
 ## Website Component Config
 
-`public/revisitXR-1/config.json` currently exposes six website trials:
+`public/revisitXR-1/config.json` currently exposes seven website trials:
 
 - `revisitxr-0`
   Points at `assets/reVISitXR/index.html`
@@ -34,6 +34,8 @@ That manual copy step still applies after the replay-visual refinement. Repo B d
   Points at `assets/reVISitXR/index.html?scene=4`
 - `revisitxr-5`
   Points at `assets/reVISitXR/index.html?scene=5`
+- `revisitxr-6`
+  Points at `assets/reVISitXR/index.html?scene=6`
 
 Optional scene URLs now supported by Repo A:
 
@@ -59,6 +61,8 @@ Optional scene URLs now supported by Repo A:
   Demo 4 situated AR campus monitoring overlay
 - `assets/reVISitXR/index.html?scene=5`
   Demo 5 landmark scale visceralization
+- `assets/reVISitXR/index.html?scene=6`
+  Demo 6 Slice Rush mini-game replay baseline
 
 Repo B stays intentionally thin in this round. It just points at the right built Repo A URL and lists whichever reactive ids the study sidebar should surface.
 
@@ -156,7 +160,27 @@ Demo 4 is the Campus Commons Monitoring Overlay trial. It asks participants to p
 - `xrVisceralStateSummaryJson`
 - `xrStateSummaryJson`
 
-Demo 5 is the Landmark Scale Visceralization trial. It asks participants to compare authored landmark scale views and submit the tallest landmark. The fixed study sequence places `revisitxr-5` after `revisitxr-4` and before the demographics pages.
+Demo 5 is the Landmark Scale Visceralization trial. It asks participants to compare authored landmark scale views and submit the tallest landmark. The fixed study sequence places `revisitxr-5` after `revisitxr-4` and before `revisitxr-6`.
+
+`revisitxr-6` exposes Demo 6 game replay reactive ids:
+
+- `xrDemoId`
+- `xrTaskId`
+- `xrGameScore`
+- `xrGameCombo`
+- `xrGameComboMax`
+- `xrGameHits`
+- `xrGameMisses`
+- `xrGameAccuracy`
+- `xrGameBombHits`
+- `xrGameRoundSeed`
+- `xrGameRoundState`
+- `xrGameElapsedMs`
+- `xrGameLastEvent`
+- `xrGameStateSummaryJson`
+- `xrStateSummaryJson`
+
+Demo 6 is the Slice Rush mini-game replay trial. It asks participants to play one deterministic fruit-slicing round, avoid bombs, and submit the final score. The fixed study sequence places `revisitxr-6` after `revisitxr-5` and before the demographics pages.
 
 ## Demo 1 Local Data Bundle
 

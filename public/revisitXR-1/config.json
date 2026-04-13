@@ -864,6 +864,156 @@
       "correctAnswer": [],
       "instructionLocation": "sidebar"
     },
+    "revisitxr-6": {
+      "instruction": "",
+      "type": "website",
+      "nextButtonLocation": "sidebar",
+      "path": "revisitXR-1/assets/reVISitXR/index.html?scene=6",
+      "response": [
+        {
+          "id": "xrMode",
+          "prompt": "XR mode",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrInteractionPhase",
+          "prompt": "Interaction phase",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGrabCount",
+          "prompt": "Grab count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrSessionCount",
+          "prompt": "Session count",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrLastEvent",
+          "prompt": "Last event",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrDemoId",
+          "prompt": "Demo id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrTaskId",
+          "prompt": "Task id",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameScore",
+          "prompt": "Game score",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameCombo",
+          "prompt": "Game combo",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameComboMax",
+          "prompt": "Max combo",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameHits",
+          "prompt": "Game hits",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameMisses",
+          "prompt": "Game misses",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameAccuracy",
+          "prompt": "Game accuracy",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameBombHits",
+          "prompt": "Bomb hits",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameRoundSeed",
+          "prompt": "Round seed",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameRoundState",
+          "prompt": "Round state",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameElapsedMs",
+          "prompt": "Game elapsed ms",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameLastEvent",
+          "prompt": "Game last event",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrGameStateSummaryJson",
+          "prompt": "Game state summary",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        },
+        {
+          "id": "xrStateSummaryJson",
+          "prompt": "State summary",
+          "location": "sidebar",
+          "type": "reactive",
+          "required": false
+        }
+      ],
+      "correctAnswer": [],
+      "instructionLocation": "sidebar"
+    },
     "Demographics Intro": {
       "correctAnswer": [],
       "path": "revisitXR-1/assets/demographics-intro.md",
@@ -965,6 +1115,7 @@
       "revisitxr-3",
       "revisitxr-4",
       "revisitxr-5",
+      "revisitxr-6",
       "Demographics Intro",
       "Demographics Information"
     ],
@@ -974,13 +1125,13 @@
     "authors": [
       "Shano Liang, Max Chen, Lane Harrison"
     ],
-    "date": "2026-04-12",
+    "date": "2026-04-13",
     "description": "",
     "organizations": [
       "VIEW Lab, WPI"
     ],
-    "title": "reVISitXR 1 (v1.83)",
-    "version": "1.83"
+    "title": "reVISitXR 1 (v1.9)",
+    "version": "1.9"
   },
   "uiConfig": {
     "contactEmail": "sliang1@wpi.edu",
