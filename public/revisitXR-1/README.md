@@ -177,10 +177,8 @@ Demo 5 is the Landmark Scale Visceralization trial. It asks participants to comp
 - `xrGameRoundState`
 - `xrGameElapsedMs`
 - `xrGameLastEvent`
-- `xrGameStateSummaryJson`
-- `xrStateSummaryJson`
 
-Demo 6 is the Slice Rush mini-game replay trial. It asks participants to play one deterministic fruit-slicing round, avoid bombs, and submit the final score. The fixed study sequence places `revisitxr-6` after `revisitxr-5` and before the demographics pages.
+Demo 6 is the Slice Rush mini-game replay trial. It asks participants to play one deterministic fruit-slicing round, avoid bombs, and submit the final score. The sidebar intentionally exposes scalar game responses only; compact semantic replay state remains in XR provenance rather than large reactive JSON blobs. The fixed study sequence places `revisitxr-6` after `revisitxr-5` and before the demographics pages.
 
 ## Demo 1 Local Data Bundle
 
