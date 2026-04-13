@@ -995,20 +995,6 @@
           "location": "sidebar",
           "type": "reactive",
           "required": false
-        },
-        {
-          "id": "xrGameStateSummaryJson",
-          "prompt": "Game state summary",
-          "location": "sidebar",
-          "type": "reactive",
-          "required": false
-        },
-        {
-          "id": "xrStateSummaryJson",
-          "prompt": "State summary",
-          "location": "sidebar",
-          "type": "reactive",
-          "required": false
         }
       ],
       "correctAnswer": [],
@@ -1130,8 +1116,8 @@
     "organizations": [
       "VIEW Lab, WPI"
     ],
-    "title": "reVISitXR 1 (v1.9)",
-    "version": "1.9"
+    "title": "reVISitXR 1 (v1.91)",
+    "version": "1.91"
   },
   "uiConfig": {
     "contactEmail": "sliang1@wpi.edu",
