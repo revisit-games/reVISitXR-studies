@@ -8,119 +8,11 @@
         {
           "id": "prolificId",
           "prompt": "Before we move on, please enter your Prolific ID first",
+          "secondaryText": "For demonstration, you can input 'test' or whatever you want to continue",
           "location": "belowStimulus",
           "type": "shortText",
-          "placeholder": "Prolific ID",
+          "placeholder": "For demonstration, you can input 'test' or whatever you want to continue",
           "paramCapture": "PROLIFIC_PID"
-        }
-      ],
-      "type": "markdown"
-    },
-    "Consent Form": {
-      "correctAnswer": [],
-      "path": "revisitXR-1/assets/consent.md",
-      "nextButtonText": "Agree",
-      "response": [
-        {
-          "id": "signature",
-          "location": "belowStimulus",
-          "placeholder": "Please provide your signature",
-          "prompt": "Your signature (It can be your preferred name)",
-          "required": true,
-          "type": "shortText"
-        },
-        {
-          "id": "accept",
-          "location": "belowStimulus",
-          "options": [
-            "Decline",
-            "Accept"
-          ],
-          "prompt": "Do you consent to the study and wish to continue?",
-          "required": true,
-          "requiredValue": "Accept",
-          "type": "radio"
-        }
-      ],
-      "type": "markdown"
-    },
-    "Attention Check A": {
-      "correctAnswer": [        
-        {
-          "answer": "Disagree",
-          "id": "attentionchecka"
-        }
-      ],
-      "path": "revisitXR-1/assets/attentioncheck-a.md",
-      "response": [
-        {
-          "id": "attentionchecka",
-          "prompt": "",
-          "location": "belowStimulus",
-          "required": true,
-          "options": [
-            "Strongly Agree",
-            "Agree",
-            "Neutral",
-            "Disagree",
-            "Strongly Disagree"
-          ],
-          "type": "radio"
-        }
-      ],
-      "type": "markdown"
-    },
-    "Disqualification_a": {
-      "correctAnswer": [],
-      "path": "revisitXR-1/assets/disqualification-a.md",
-      "nextButtonText":"Disqualified",
-      "response": [
-        {
-          "hidden": true,
-          "id": "disqualification-a",
-          "prompt":"You have been disqualified from this study.",
-          "required": true,
-          "type": "shortText"
-        }
-      ],
-      "type": "markdown"
-    },
-    "Color Blindness Test": {
-      "instruction": "What number do you see in this image?",
-      "path": "revisitXR-1/assets/Ishihara9.png",
-      "nextButtonLocation": "sidebar",
-      "response": [
-        {
-          "id": "colorblindness-test",
-          "location": "sidebar",
-          "prompt": "Enter the number you see:",
-          "required": true,
-          "type": "numerical",
-          "withDontKnow": true
-        }
-      ],
-      "correctAnswer": [
-        {
-          "id": "colorblindness-test",
-          "answer": 45
-        }
-      ],
-      "style": {
-        "width": "300px"
-      },
-      "type": "image"
-    },
-    "Disqualification_c": {
-      "correctAnswer": [],
-      "path": "revisitXR-1/assets/disqualification-c.md",
-      "nextButtonText":"Disqualified",
-      "response": [
-        {
-          "hidden": true,
-          "id": "disqualification-c",
-          "prompt":"You have been disqualified from this study.",
-          "required": true,
-          "type": "shortText"
         }
       ],
       "type": "markdown"
@@ -1000,12 +892,6 @@
       "correctAnswer": [],
       "instructionLocation": "sidebar"
     },
-    "Demographics Intro": {
-      "correctAnswer": [],
-      "path": "revisitXR-1/assets/demographics-intro.md",
-      "response": [],
-      "type": "markdown"
-    },
     "Demographics Information": {
       "correctAnswer": [],
       "path": "revisitXR-1/assets/demographics.md",
@@ -1060,41 +946,6 @@
   "sequence": {
     "components": [
       "introduction",
-      "Consent Form",
-      {
-        "components": [
-          "Attention Check A",
-          "Disqualification_a"
-        ],
-        "order": "fixed",
-        "skip": [
-          {
-            "name": "Attention Check A",
-            "check": "response",
-            "responseId": "attentionchecka",
-            "value": "Disagree",
-            "comparison": "equal",
-            "to": "Color Blindness Test"
-          }
-        ]
-      },
-      {
-        "components": [
-          "Color Blindness Test",
-          "Disqualification_c"
-        ],
-        "order": "fixed",
-        "skip": [
-          {
-            "name": "Color Blindness Test",
-            "check": "response",
-            "responseId": "colorblindness-test",
-            "value": 45,
-            "comparison": "equal",
-            "to": "revisitxr-1"
-          }
-        ]
-      },
       "revisitxr-0",
       "revisitxr-1",
       "revisitxr-2",
@@ -1102,7 +953,6 @@
       "revisitxr-4",
       "revisitxr-5",
       "revisitxr-6",
-      "Demographics Intro",
       "Demographics Information"
     ],
     "order": "fixed"
@@ -1116,8 +966,8 @@
     "organizations": [
       "VIEW Lab, WPI"
     ],
-    "title": "reVISitXR 1 (v1.92)",
-    "version": "1.92"
+    "title": "reVISitXR Live Demonstration (v1.93)",
+    "version": "1.93"
   },
   "uiConfig": {
     "contactEmail": "sliang1@wpi.edu",
@@ -1126,7 +976,7 @@
     "timeoutReject": true,
     "nextOnEnter": true,
     "sidebar": true,
-    "sidebarWidth": 400,
+    "sidebarWidth": 300,
     "studyEndMsg": "**Thank you for completing the study. You may click this link and return to Prolific**: []()",
     "withProgressBar": false,
     "urlParticipantIdParam": "PROLIFIC_PID",

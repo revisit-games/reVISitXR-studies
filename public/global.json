@@ -2,7 +2,6 @@
   "$schema": "https://raw.githubusercontent.com/revisit-studies/study/v2.1.1/src/parser/GlobalConfigSchema.json",
   "configsList": [
     "revisitXR-1",
-    "revisitgames-study-3",
     "tutorial",
     "example-brush-interactions",
     "example-cleveland",
@@ -39,9 +38,6 @@
   "configs": {
     "revisitXR-1": {
       "path": "revisitXR-1/config.json"
-    },
-    "revisitgames-study-3": {
-      "path": "revisitgames-study-3/config.json"
     },
     "tutorial": {
       "path": "tutorial/config.json"
